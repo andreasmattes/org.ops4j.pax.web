@@ -16,7 +16,7 @@
 package org.ops4j.pax.web.service.jetty.internal.web;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
+// import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 

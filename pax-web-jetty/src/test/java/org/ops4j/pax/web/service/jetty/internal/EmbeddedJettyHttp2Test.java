@@ -41,6 +41,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.util.BufferUtil;
 import org.eclipse.jetty.util.Callback;
+import org.eclipse.jetty.util.NanoTime;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -82,7 +83,7 @@ public class EmbeddedJettyHttp2Test {
 
 	@BeforeEach
 	public void resetState() {
-		decoder = new HpackDecoder(8192);
+		decoder = new HpackDecoder(8192, NanoTime::now);
 		decoder.setMaxTableCapacity(4096);
 		responses = new HashMap<>();
 	}

@@ -27,7 +27,7 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import jakarta.servlet.DispatcherType;
+// import jakarta.servlet.DispatcherType;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
@@ -35,13 +35,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+// import jakarta.servlet.http.HttpSession;
 import org.eclipse.jetty.ee10.servlet.ServletContextRequest;
 import org.eclipse.jetty.ee10.servlet.SessionHandler;
 import org.eclipse.jetty.http.HttpField;
 import org.eclipse.jetty.http.HttpHeader;
 import org.eclipse.jetty.http.HttpStatus;
-import org.eclipse.jetty.server.Handler;
+// import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
 import org.eclipse.jetty.server.handler.ContextHandler;
@@ -379,10 +379,12 @@ public class PaxWebServletContextHandler extends ServletContextHandler {
 	protected void handleMovedPermanently(Request request, Response response, Callback callback) {
 		// Pax Web - copied original code, but switching 301 to 302 (just as for Tomcat and Undertow)
 		String location = getContextPath() + "/";
-		if (request.getHttpURI().getParam() != null)
+		if (request.getHttpURI().getParam() != null) {
 			location += ";" + request.getHttpURI().getParam();
-		if (request.getHttpURI().getQuery() != null)
+		}
+		if (request.getHttpURI().getQuery() != null) {
 			location += ";" + request.getHttpURI().getQuery();
+		}
 
 		response.setStatus(HttpStatus.MOVED_TEMPORARILY_302);
 		response.getHeaders().add(new HttpField(HttpHeader.LOCATION, location));

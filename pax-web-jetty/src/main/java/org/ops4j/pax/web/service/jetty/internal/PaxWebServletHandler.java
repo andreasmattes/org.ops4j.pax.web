@@ -18,19 +18,22 @@ package org.ops4j.pax.web.service.jetty.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
+
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+// import jakarta.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.ee10.servlet.ServletContextRequest;
-import org.eclipse.jetty.ee10.servlet.ServletContextResponse;
+// import org.eclipse.jetty.ee10.servlet.ServletContextResponse;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.ee10.servlet.FilterHolder;
 import org.eclipse.jetty.ee10.servlet.FilterMapping;
@@ -173,6 +176,11 @@ public class PaxWebServletHandler extends ServletHandler {
 		for (FilterHolder fh : getFilters()) {
 			if (fh instanceof PaxWebFilterHolder pwfh) {
 				if (pwfh.getFilterModel() == null || pwfh.getFilterModel().isDynamic()) {
+					try {
+						pwfh.destroyInstance(pwfh.getInstance());
+					} catch (Exception e) {
+						LOG.warn("Problem destroying filter {}: {}", pwfh, e.getMessage(), e);
+					}
 					continue;
 				}
 				newFilters.add(pwfh);
@@ -384,13 +392,32 @@ public class PaxWebServletHandler extends ServletHandler {
 			// 3b. if the holder is for known 404 servlet, we still need a chain that calls 404 servlet
 			chain = holder::handle;
 		}
-		List<Preprocessor> preprocessorInstances = preprocessors.stream().map(PreprocessorFilterConfig::getInstance).toList();
+
+		// listener called when org.osgi.service.http.HttpContext.handleSecurity() returns true
+		// FIXME: Jetty 12-specific authentication
+		Consumer<HttpServletRequest> authListener = (req) -> { /*
+			final Object user = req.getAttribute(ServletContextHelper.REMOTE_USER);
+			final Object authType = req.getAttribute(ServletContextHelper.AUTHENTICATION_TYPE);
+
+			if (user != null || authType != null) {
+				// translate it into Jetty specific authentication
+				if (baseRequest.getAuthentication() == null || baseRequest.getAuthentication() == Authentication.UNAUTHENTICATED) {
+					String userName = user != null ? user.toString() : null;
+					String authMethod = authType != null ? authType.toString() : null;
+					Principal p = new UserPrincipal(userName, null);
+					Subject s = new Subject(true, Collections.singleton(p), Collections.emptySet(), Collections.emptySet());
+					baseRequest.setAuthentication(new UserAuthentication(authMethod, new DefaultUserIdentity(s, p, new String[0])));
+				}
+			} */
+		};
+
+		Preprocessor[] preprocessorInstances = preprocessors.stream().map(PreprocessorFilterConfig::getInstance).toArray(Preprocessor[]::new);
 		if (!holder.is404()) {
-			return new OsgiFilterChain(new ArrayList<>(preprocessorInstances), holder.getOsgiServletContext(),
-					holder.getWebContainerContext(), chain, osgiSessionsBridge);
+			return new OsgiFilterChain(Arrays.asList(preprocessorInstances), holder.getOsgiServletContext(),
+					holder.getWebContainerContext(), chain, osgiSessionsBridge, authListener);
 		} else {
-			return new OsgiFilterChain(new ArrayList<>(preprocessorInstances), defaultServletContext,
-					defaultWebContainerContext, chain, osgiSessionsBridge);
+			return new OsgiFilterChain(Arrays.asList(preprocessorInstances), defaultServletContext,
+					defaultWebContainerContext, chain, osgiSessionsBridge, authListener);
 		}
 	}
 
@@ -418,13 +445,13 @@ public class PaxWebServletHandler extends ServletHandler {
 
 		FilterChain chain = _chainCache[dispatch].get(key);
 		if (chain != null) {
-			List<Preprocessor> preprocessorInstances = preprocessors.stream().map(PreprocessorFilterConfig::getInstance).toList();
+			Preprocessor[] preprocessorInstances = preprocessors.stream().map(PreprocessorFilterConfig::getInstance).toArray(Preprocessor[]::new);
 			if (!holder.is404()) {
-				return new OsgiFilterChain(new ArrayList<>(preprocessorInstances), holder.getOsgiServletContext(),
-						holder.getWebContainerContext(), chain, osgiSessionsBridge);
+				return new OsgiFilterChain(Arrays.asList(preprocessorInstances), holder.getOsgiServletContext(),
+						holder.getWebContainerContext(), chain, osgiSessionsBridge, null);
 			} else {
-				return new OsgiFilterChain(new ArrayList<>(preprocessorInstances), defaultServletContext,
-						defaultWebContainerContext, chain, osgiSessionsBridge);
+				return new OsgiFilterChain(Arrays.asList(preprocessorInstances), defaultServletContext,
+						defaultWebContainerContext, chain, osgiSessionsBridge, null);
 			}
 		}
 
@@ -459,13 +486,13 @@ public class PaxWebServletHandler extends ServletHandler {
 			// 3b. if the holder is for known 404 servlet, we still need a chain that calls 404 servlet
 			chain = holder::handle;
 		}
-		List<Preprocessor> preprocessorInstances = preprocessors.stream().map(PreprocessorFilterConfig::getInstance).toList();
+		Preprocessor[] preprocessorInstances = preprocessors.stream().map(PreprocessorFilterConfig::getInstance).toArray(Preprocessor[]::new);
 		if (!holder.is404()) {
-			return new OsgiFilterChain(new ArrayList<>(preprocessorInstances), holder.getOsgiServletContext(),
-					holder.getWebContainerContext(), chain, osgiSessionsBridge);
+			return new OsgiFilterChain(Arrays.asList(preprocessorInstances), holder.getOsgiServletContext(),
+					holder.getWebContainerContext(), chain, osgiSessionsBridge, null);
 		} else {
-			return new OsgiFilterChain(new ArrayList<>(preprocessorInstances), defaultServletContext,
-					defaultWebContainerContext, chain, osgiSessionsBridge);
+			return new OsgiFilterChain(Arrays.asList(preprocessorInstances), defaultServletContext,
+					defaultWebContainerContext, chain, osgiSessionsBridge, null);
 		}
 	}
 

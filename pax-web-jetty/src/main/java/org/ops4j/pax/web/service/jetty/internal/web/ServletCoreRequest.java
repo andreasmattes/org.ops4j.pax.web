@@ -52,27 +52,23 @@ import static org.eclipse.jetty.util.URIUtil.encodePath;
  * The current implementation does not support any read operations.
  * </p>
  */
-class ServletCoreRequest implements Request
-{
+class ServletCoreRequest implements Request {
     private final HttpServletRequest _servletRequest;
     private final ServletContextRequest _servletContextRequest;
     private final HttpFields _httpFields;
     private final HttpURI _uri;
 
-    ServletCoreRequest(HttpServletRequest request)
-    {
+    ServletCoreRequest(HttpServletRequest request) {
         _servletRequest = request;
         _servletContextRequest = ServletContextRequest.getServletContextRequest(_servletRequest);
 
         HttpFields.Mutable fields = HttpFields.build();
 
         Enumeration<String> headerNames = request.getHeaderNames();
-        while (headerNames.hasMoreElements())
-        {
+        while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
             Enumeration<String> headerValues = request.getHeaders(headerName);
-            while (headerValues.hasMoreElements())
-            {
+            while (headerValues.hasMoreElements()) {
                 String headerValue = headerValues.nextElement();
                 fields.add(new HttpField(headerName, headerValue));
             }
@@ -86,182 +82,155 @@ class ServletCoreRequest implements Request
         builder.scheme(request.getScheme())
             .authority(request.getServerName(), request.getServerPort());
 
-        if (included)
+        if (included) {
             builder.path(addEncodedPaths(request.getContextPath(), encodePath(DefaultServlet.getIncludedPathInContext(request, includedServletPath, false))));
-        else if (request.getDispatcherType() != DispatcherType.REQUEST)
+        } else if (request.getDispatcherType() != DispatcherType.REQUEST) {
             builder.path(addEncodedPaths(request.getContextPath(), encodePath(URIUtil.addPaths(_servletRequest.getServletPath(), _servletRequest.getPathInfo()))));
-        else
+        } else {
             builder.path(request.getRequestURI());
+        }
         builder.query(request.getQueryString());
         _uri = builder.asImmutable();
     }
 
     @Override
-    public HttpFields getHeaders()
-    {
+    public HttpFields getHeaders() {
         return _httpFields;
     }
 
     @Override
-    public HttpURI getHttpURI()
-    {
+    public HttpURI getHttpURI() {
         return _uri;
     }
 
     @Override
-    public String getId()
-    {
+    public String getId() {
         return _servletRequest.getRequestId();
     }
 
     @Override
-    public String getMethod()
-    {
+    public String getMethod() {
         return _servletRequest.getMethod();
     }
 
-    public HttpServletRequest getServletRequest()
-    {
+    public HttpServletRequest getServletRequest() {
         return _servletRequest;
     }
 
     @Override
-    public boolean isSecure()
-    {
+    public boolean isSecure() {
         return _servletRequest.isSecure();
     }
 
     @Override
-    public Object removeAttribute(String name)
-    {
+    public Object removeAttribute(String name) {
         Object value = _servletRequest.getAttribute(name);
         _servletRequest.removeAttribute(name);
         return value;
     }
 
     @Override
-    public Object setAttribute(String name, Object attribute)
-    {
+    public Object setAttribute(String name, Object attribute) {
         Object value = _servletRequest.getAttribute(name);
         _servletRequest.setAttribute(name, attribute);
         return value;
     }
 
     @Override
-    public Object getAttribute(String name)
-    {
+    public Object getAttribute(String name) {
         return _servletRequest.getAttribute(name);
     }
 
     @Override
-    public Set<String> getAttributeNameSet()
-    {
+    public Set<String> getAttributeNameSet() {
         Set<String> set = new HashSet<>();
         Enumeration<String> e = _servletRequest.getAttributeNames();
-        while (e.hasMoreElements())
-        {
+        while (e.hasMoreElements()) {
             set.add(e.nextElement());
         }
         return set;
     }
 
     @Override
-    public void clearAttributes()
-    {
+    public void clearAttributes() {
         Enumeration<String> e = _servletRequest.getAttributeNames();
-        while (e.hasMoreElements())
-        {
+        while (e.hasMoreElements()) {
             _servletRequest.removeAttribute(e.nextElement());
         }
     }
 
     @Override
-    public void fail(Throwable failure)
-    {
+    public void fail(Throwable failure) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public Components getComponents()
-    {
+    public Components getComponents() {
         return _servletContextRequest.getComponents();
     }
 
     @Override
-    public ConnectionMetaData getConnectionMetaData()
-    {
+    public ConnectionMetaData getConnectionMetaData() {
         return _servletContextRequest.getConnectionMetaData();
     }
 
     @Override
-    public Context getContext()
-    {
+    public Context getContext() {
         return _servletContextRequest.getContext();
     }
 
     @Override
-    public void demand(Runnable demandCallback)
-    {
+    public void demand(Runnable demandCallback) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public HttpFields getTrailers()
-    {
+    public HttpFields getTrailers() {
         return _servletContextRequest.getTrailers();
     }
 
     @Override
-    public long getBeginNanoTime()
-    {
+    public long getBeginNanoTime() {
         return _servletContextRequest.getBeginNanoTime();
     }
 
     @Override
-    public long getHeadersNanoTime()
-    {
+    public long getHeadersNanoTime() {
         return _servletContextRequest.getHeadersNanoTime();
     }
 
     @Override
-    public Content.Chunk read()
-    {
+    public Content.Chunk read() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean consumeAvailable()
-    {
+    public boolean consumeAvailable() {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void addIdleTimeoutListener(Predicate<TimeoutException> onIdleTimeout)
-    {
+    public void addIdleTimeoutListener(Predicate<TimeoutException> onIdleTimeout) {
         _servletContextRequest.addIdleTimeoutListener(onIdleTimeout);
     }
 
     @Override
-    public void addFailureListener(Consumer<Throwable> onFailure)
-    {
+    public void addFailureListener(Consumer<Throwable> onFailure) {
         _servletContextRequest.addFailureListener(onFailure);
     }
 
     @Override
-    public TunnelSupport getTunnelSupport()
-    {
+    public TunnelSupport getTunnelSupport() {
         return null;
     }
 
     @Override
-    public void addHttpStreamWrapper(Function<HttpStream, HttpStream> wrapper)
-    {
+    public void addHttpStreamWrapper(Function<HttpStream, HttpStream> wrapper) {
         _servletContextRequest.addHttpStreamWrapper(wrapper);
     }
 
     @Override
-    public Session getSession(boolean create)
-    {
+    public Session getSession(boolean create) {
         return Session.getSession(_servletRequest.getSession(create));
     }
 }

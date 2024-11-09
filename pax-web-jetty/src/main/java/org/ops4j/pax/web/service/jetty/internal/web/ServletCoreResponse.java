@@ -40,34 +40,28 @@ import org.eclipse.jetty.util.IO;
  * A {@link HttpServletResponse} wrapped as a core {@link Response}.
  * All write operations are internally converted to blocking writes on the servlet API.
  */
-class ServletCoreResponse implements Response
-{
+class ServletCoreResponse implements Response {
     private final HttpServletResponse _response;
     private final Request _coreRequest;
     private final HttpFields.Mutable _httpFields;
     private final boolean _included;
     private final ServletContextResponse _servletContextResponse;
 
-    public ServletCoreResponse(Request coreRequest, HttpServletResponse response, boolean included)
-    {
+    ServletCoreResponse(Request coreRequest, HttpServletResponse response, boolean included) {
         _coreRequest = coreRequest;
         _response = response;
         _servletContextResponse = ServletContextResponse.getServletContextResponse(response);
         HttpFields.Mutable fields = new HttpServletResponseHttpFields(response);
-        if (included)
-        {
+        if (included) {
             // If included, accept but ignore mutations.
-            fields = new HttpFields.Mutable.Wrapper(fields)
-            {
+            fields = new HttpFields.Mutable.Wrapper(fields) {
                 @Override
-                public HttpField onAddField(HttpField field)
-                {
+                public HttpField onAddField(HttpField field) {
                     return null;
                 }
 
                 @Override
-                public boolean onRemoveField(HttpField field)
-                {
+                public boolean onRemoveField(HttpField field) {
                     return false;
                 }
             };
@@ -77,137 +71,115 @@ class ServletCoreResponse implements Response
     }
 
     @Override
-    public HttpFields.Mutable getHeaders()
-    {
+    public HttpFields.Mutable getHeaders() {
         return _httpFields;
     }
 
-    public HttpServletResponse getServletResponse()
-    {
+    public HttpServletResponse getServletResponse() {
         return _response;
     }
 
     @Override
-    public boolean hasLastWrite()
-    {
+    public boolean hasLastWrite() {
         return _servletContextResponse.hasLastWrite();
     }
 
     @Override
-    public boolean isCompletedSuccessfully()
-    {
+    public boolean isCompletedSuccessfully() {
         return _servletContextResponse.isCompletedSuccessfully();
     }
 
     @Override
-    public boolean isCommitted()
-    {
+    public boolean isCommitted() {
         return _response.isCommitted();
     }
 
-    private boolean isWriting()
-    {
+    private boolean isWriting() {
         return _servletContextResponse.isWriting();
     }
 
     @Override
-    public void write(boolean last, ByteBuffer byteBuffer, Callback callback)
-    {
-        if (_included)
+    public void write(boolean last, ByteBuffer byteBuffer, Callback callback) {
+        if (_included) {
             last = false;
-        try
-        {
-            if (BufferUtil.hasContent(byteBuffer))
-            {
-                if (isWriting())
-                {
+        }
+        try {
+            if (BufferUtil.hasContent(byteBuffer)) {
+                if (isWriting()) {
                     String characterEncoding = _response.getCharacterEncoding();
                     try (ByteBufferInputStream bbis = new ByteBufferInputStream(byteBuffer);
-                         InputStreamReader reader = new InputStreamReader(bbis, characterEncoding))
-                    {
+                         InputStreamReader reader = new InputStreamReader(bbis, characterEncoding)) {
                         IO.copy(reader, _response.getWriter());
                     }
 
-                    if (last)
+                    if (last) {
                         _response.getWriter().close();
-                }
-                else
-                {
+                    }
+                } else {
                     BufferUtil.writeTo(byteBuffer, _response.getOutputStream());
-                    if (last)
+                    if (last) {
                         _response.getOutputStream().close();
+                    }
                 }
             }
 
             callback.succeeded();
-        }
-        catch (Throwable t)
-        {
+        } catch (Throwable t) {
             callback.failed(t);
         }
     }
 
     @Override
-    public Request getRequest()
-    {
+    public Request getRequest() {
         return _coreRequest;
     }
 
     @Override
-    public int getStatus()
-    {
+    public int getStatus() {
         return _response.getStatus();
     }
 
     @Override
-    public void setStatus(int code)
-    {
-        if (_included)
+    public void setStatus(int code) {
+        if (_included) {
             return;
+        }
         _response.setStatus(code);
     }
 
     @Override
-    public Supplier<HttpFields> getTrailersSupplier()
-    {
+    public Supplier<HttpFields> getTrailersSupplier() {
         return null;
     }
 
     @Override
-    public void setTrailersSupplier(Supplier<HttpFields> trailers)
-    {
+    public void setTrailersSupplier(Supplier<HttpFields> trailers) {
     }
 
     @Override
-    public void reset()
-    {
+    public void reset() {
         _response.reset();
     }
 
     @Override
-    public CompletableFuture<Void> writeInterim(int status, HttpFields headers)
-    {
+    public CompletableFuture<Void> writeInterim(int status, HttpFields headers) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public String toString()
-    {
-        return "%s@%x{%s,%s}".formatted(this.getClass().getSimpleName(), hashCode(), this._coreRequest, _response);
+    public String toString() {
+        return String.format("%s@%x{%s,%s}", this.getClass().getSimpleName(), hashCode(), this._coreRequest, _response);
     }
 
-    private static class HttpServletResponseHttpFields implements HttpFields.Mutable
-    {
+    private static class HttpServletResponseHttpFields implements HttpFields.Mutable {
         private final HttpServletResponse _response;
 
-        private HttpServletResponseHttpFields(HttpServletResponse response)
-        {
+        private HttpServletResponseHttpFields(HttpServletResponse response) {
             _response = response;
         }
 
         @Override
-        public ListIterator<HttpField> listIterator(int index)
-        {
+        public ListIterator<HttpField> listIterator(int index) {
             // The minimum requirement is to implement the listIterator, but it is inefficient.
             // Other methods are implemented for efficiency.
             final ListIterator<HttpField> list = _response.getHeaderNames().stream()
@@ -215,51 +187,44 @@ class ServletCoreResponse implements Response
                 .collect(Collectors.toList())
                 .listIterator(index);
 
-            return new ListIterator<>()
-            {
+            return new ListIterator<>() {
                 HttpField _last;
 
                 @Override
-                public boolean hasNext()
-                {
+                public boolean hasNext() {
                     return list.hasNext();
                 }
 
                 @Override
-                public HttpField next()
-                {
-                    return _last = list.next();
+                public HttpField next() {
+                    _last = list.next();
+                    return _last;
                 }
 
                 @Override
-                public boolean hasPrevious()
-                {
+                public boolean hasPrevious() {
                     return list.hasPrevious();
                 }
 
                 @Override
-                public HttpField previous()
-                {
-                    return _last = list.previous();
+                public HttpField previous() {
+                    _last = list.previous();
+                    return _last;
                 }
 
                 @Override
-                public int nextIndex()
-                {
+                public int nextIndex() {
                     return list.nextIndex();
                 }
 
                 @Override
-                public int previousIndex()
-                {
+                public int previousIndex() {
                     return list.previousIndex();
                 }
 
                 @Override
-                public void remove()
-                {
-                    if (_last != null)
-                    {
+                public void remove() {
+                    if (_last != null) {
                         // This is not exactly the right semantic for repeated field names
                         list.remove();
                         _response.setHeader(_last.getName(), null);
@@ -267,15 +232,13 @@ class ServletCoreResponse implements Response
                 }
 
                 @Override
-                public void set(HttpField httpField)
-                {
+                public void set(HttpField httpField) {
                     list.set(httpField);
                     _response.setHeader(httpField.getName(), httpField.getValue());
                 }
 
                 @Override
-                public void add(HttpField httpField)
-                {
+                public void add(HttpField httpField) {
                     list.add(httpField);
                     _response.addHeader(httpField.getName(), httpField.getValue());
                 }
@@ -283,96 +246,85 @@ class ServletCoreResponse implements Response
         }
 
         @Override
-        public Mutable add(String name, String value)
-        {
+        public Mutable add(String name, String value) {
             _response.addHeader(name, value);
             return this;
         }
 
         @Override
-        public Mutable add(HttpHeader header, HttpHeaderValue value)
-        {
+        public Mutable add(HttpHeader header, HttpHeaderValue value) {
             _response.addHeader(header.asString(), value.asString());
             return this;
         }
 
         @Override
-        public Mutable add(HttpHeader header, String value)
-        {
+        public Mutable add(HttpHeader header, String value) {
             _response.addHeader(header.asString(), value);
             return this;
         }
 
         @Override
-        public Mutable add(HttpField field)
-        {
+        public Mutable add(HttpField field) {
             _response.addHeader(field.getName(), field.getValue());
             return this;
         }
 
         @Override
-        public Mutable put(HttpField field)
-        {
+        public Mutable put(HttpField field) {
             _response.setHeader(field.getName(), field.getValue());
             return this;
         }
 
         @Override
-        public Mutable put(String name, String value)
-        {
+        public Mutable put(String name, String value) {
             _response.setHeader(name, value);
             return this;
         }
 
         @Override
-        public Mutable put(HttpHeader header, HttpHeaderValue value)
-        {
+        public Mutable put(HttpHeader header, HttpHeaderValue value) {
             _response.setHeader(header.asString(), value.asString());
             return this;
         }
 
         @Override
-        public Mutable put(HttpHeader header, String value)
-        {
+        public Mutable put(HttpHeader header, String value) {
             _response.setHeader(header.asString(), value);
             return this;
         }
 
         @Override
-        public Mutable put(String name, List<String> list)
-        {
+        public Mutable put(String name, List<String> list) {
             Objects.requireNonNull(name);
             Objects.requireNonNull(list);
             boolean first = true;
-            for (String s : list)
-            {
-                if (first)
+            for (String s : list) {
+                if (first) {
                     _response.setHeader(name, s);
-                else
+                } else {
                     _response.addHeader(name, s);
+                }
                 first = false;
             }
             return this;
         }
 
         @Override
-        public Mutable remove(HttpHeader header)
-        {
+        public Mutable remove(HttpHeader header) {
             _response.setHeader(header.asString(), null);
             return this;
         }
 
         @Override
-        public Mutable remove(EnumSet<HttpHeader> fields)
-        {
-            for (HttpHeader header : fields)
+        public Mutable remove(EnumSet<HttpHeader> fields) {
+            for (HttpHeader header : fields) {
                 remove(header);
+            }
             return this;
         }
 
         @Override
-        public Mutable remove(String name)
-        {
+        public Mutable remove(String name) {
             _response.setHeader(name, null);
             return this;
         }
