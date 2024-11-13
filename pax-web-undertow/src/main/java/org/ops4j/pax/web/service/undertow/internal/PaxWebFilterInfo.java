@@ -16,8 +16,8 @@
 package org.ops4j.pax.web.service.undertow.internal;
 
 import java.util.Map;
-import javax.servlet.Filter;
-import javax.servlet.ServletContext;
+import jakarta.servlet.Filter;
+import jakarta.servlet.ServletContext;
 
 import io.undertow.servlet.api.FilterInfo;
 import io.undertow.servlet.api.InstanceFactory;

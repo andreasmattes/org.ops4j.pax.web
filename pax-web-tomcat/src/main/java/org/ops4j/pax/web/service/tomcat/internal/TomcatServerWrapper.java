@@ -36,13 +36,13 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.function.Supplier;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextAttributeListener;
-import javax.servlet.ServletContextListener;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionListener;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextAttributeListener;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.SessionCookieConfig;
+import jakarta.servlet.http.HttpSessionAttributeListener;
+import jakarta.servlet.http.HttpSessionListener;
 
 import org.apache.catalina.AccessLog;
 import org.apache.catalina.Container;
@@ -216,7 +216,7 @@ class TomcatServerWrapper implements BatchVisitor {
 
 	/**
 	 * 1:1 mapping between {@link OsgiContextModel} and {@link org.osgi.service.http.context.ServletContextHelper}'s
-	 * specific {@link javax.servlet.ServletContext}.
+	 * specific {@link jakarta.servlet.ServletContext}.
 	 */
 	private final Map<OsgiContextModel, OsgiServletContext> osgiServletContexts = new HashMap<>();
 

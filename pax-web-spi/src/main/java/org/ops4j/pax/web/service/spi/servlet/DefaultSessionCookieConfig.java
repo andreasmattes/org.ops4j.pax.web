@@ -15,7 +15,7 @@
  */
 package org.ops4j.pax.web.service.spi.servlet;
 
-import javax.servlet.SessionCookieConfig;
+import jakarta.servlet.SessionCookieConfig;
 
 public class DefaultSessionCookieConfig implements SessionCookieConfig {
 

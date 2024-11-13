@@ -21,8 +21,8 @@ import java.util.Dictionary;
 import java.util.EventListener;
 import java.util.Hashtable;
 import java.util.List;
-import javax.servlet.Filter;
-import javax.servlet.Servlet;
+import jakarta.servlet.Filter;
+import jakarta.servlet.Servlet;
 
 import org.ops4j.pax.web.extender.whiteboard.internal.tracker.FilterTracker;
 import org.ops4j.pax.web.extender.whiteboard.internal.tracker.HttpContextTracker;
@@ -114,7 +114,7 @@ public class Activator implements BundleActivator {
 		//  - we have lot of customizers in org.ops4j.pax.web.extender.whiteboard.internal.tracker package ("tracker"
 		//    name was always used...)
 		//  - each such customizer has static method to create actual ServiceTracker with "this" as the customizer
-		//  - each customizer translates "incoming service" like javax.servlet.Servlet into "internal model" (a.k.a.
+		//  - each customizer translates "incoming service" like jakarta.servlet.Servlet into "internal model" (a.k.a.
 		//    "customized object")
 		//  - each tracker takes "bundle whiteboard application" (collection of web elements/contexts registered by
 		//    given bundle) from the extender context and registers/unregister such "customized object"

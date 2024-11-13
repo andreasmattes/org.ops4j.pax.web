@@ -17,7 +17,7 @@ package org.ops4j.pax.web.service;
 
 import java.security.cert.CertStoreParameters;
 import javax.net.ssl.SSLContext;
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 /**
  * <p>Dedicated interface with constants related to configuration. Other constants reside
@@ -162,7 +162,7 @@ public interface PaxWebConfig {
 	String BUNDLE_CONTEXT_PROPERTY_WAR_EXTENDER_JARS_TO_SCAN = "org.ops4j.pax.web.extender.war.jarsToScan";
 
 	/**
-	 * <p>Defines the type of TCCL that should be set for service methods (like {@link javax.servlet.Servlet#service}).
+	 * <p>Defines the type of TCCL that should be set for service methods (like {@link jakarta.servlet.Servlet#service}).
 	 * It can take two values:<ul>
 	 *     <li>{@code servlet} (the default, assumed value) - {@link ServletContext#getClassLoader()} returns
 	 *     only the bundle's class loader for given servlet/filter, but TCCL is set to servlet context's classloader</li>

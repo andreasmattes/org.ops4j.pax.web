@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.ops4j.pax.web.service.spi.model.elements.ErrorPageModel;
 import org.ops4j.pax.web.service.spi.model.elements.FilterModel;

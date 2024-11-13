@@ -34,9 +34,9 @@ import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.context.ServletContextHelper;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 
-import javax.servlet.Servlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.Principal;

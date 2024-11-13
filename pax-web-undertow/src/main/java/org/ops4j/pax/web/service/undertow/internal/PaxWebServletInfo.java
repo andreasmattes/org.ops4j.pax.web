@@ -15,8 +15,8 @@
  */
 package org.ops4j.pax.web.service.undertow.internal;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
 
 import io.undertow.servlet.api.InstanceFactory;
 import io.undertow.servlet.api.InstanceHandle;

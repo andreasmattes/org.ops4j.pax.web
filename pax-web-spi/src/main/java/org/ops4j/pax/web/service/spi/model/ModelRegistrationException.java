@@ -15,7 +15,7 @@
  */
 package org.ops4j.pax.web.service.spi.model;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.osgi.service.http.NamespaceException;
 

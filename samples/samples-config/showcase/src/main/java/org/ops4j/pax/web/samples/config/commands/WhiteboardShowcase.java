@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
-import javax.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServlet;
 
 import org.apache.karaf.shell.api.action.Action;
 import org.apache.karaf.shell.api.action.Argument;

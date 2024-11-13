@@ -47,7 +47,7 @@ public class EventListenerModel extends ElementModel<EventListener, EventListene
 	private EventListener resolvedListener;
 
 	/**
-	 * Flag used for models registered using {@link javax.servlet.ServletContext#addListener}
+	 * Flag used for models registered using {@link jakarta.servlet.ServletContext#addListener}
 	 */
 	private boolean dynamic = false;
 
@@ -95,7 +95,7 @@ public class EventListenerModel extends ElementModel<EventListener, EventListene
 	 * Method to be called by actual runtime to obtain an instance of the listener. With
 	 * servlets and filters it is performed by runtime-specific <em>holder</em> classes which
 	 * control the lifecycle of servlets/filters, but here we do it ourselves, as there's no
-	 * lifecycle of the listener itself from the point of view of JavaEE Servlets specification.
+	 * lifecycle of the listener itself from the point of view of JakartaEE Servlets specification.
 	 * @return
 	 */
 	public EventListener resolveEventListener() {

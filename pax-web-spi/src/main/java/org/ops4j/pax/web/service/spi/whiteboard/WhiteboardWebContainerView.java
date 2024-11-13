@@ -61,7 +61,7 @@ public interface WhiteboardWebContainerView extends PaxWebContainerView {
 	List<OsgiContextModel> getOsgiContextModels(Bundle bundle);
 
 	/**
-	 * One-stop method to register a {@link javax.servlet.Servlet} described using {@link ServletModel}.
+	 * One-stop method to register a {@link jakarta.servlet.Servlet} described using {@link ServletModel}.
 	 * {@link ServletModel} should always be associated with target (one or many) {@link OsgiContextModel}, because
 	 * differently than with {@link org.osgi.service.http.HttpService} scenario, contexts are targeted by logical name
 	 * (or LDAP selector) and not as any instance.
@@ -76,7 +76,7 @@ public interface WhiteboardWebContainerView extends PaxWebContainerView {
 	void unregisterServlet(ServletModel model);
 
 	/**
-	 * One-stop method to register a {@link javax.servlet.Filter} described using {@link FilterModel}.
+	 * One-stop method to register a {@link jakarta.servlet.Filter} described using {@link FilterModel}.
 	 * {@link FilterModel} should always be associated with target (one or many) {@link OsgiContextModel}.
 	 * @param model
 	 */

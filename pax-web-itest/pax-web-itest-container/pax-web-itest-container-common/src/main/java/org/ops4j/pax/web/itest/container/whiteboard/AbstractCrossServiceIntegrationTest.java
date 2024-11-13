@@ -17,7 +17,7 @@ package org.ops4j.pax.web.itest.container.whiteboard;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
 
 import org.junit.Test;
 import org.ops4j.pax.web.itest.container.AbstractContainerTestBase;

@@ -17,7 +17,7 @@
 package org.ops4j.pax.web.service.spi;
 
 import java.net.URL;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 import org.ops4j.pax.web.service.spi.config.Configuration;
 import org.ops4j.pax.web.service.spi.model.events.ServerListener;

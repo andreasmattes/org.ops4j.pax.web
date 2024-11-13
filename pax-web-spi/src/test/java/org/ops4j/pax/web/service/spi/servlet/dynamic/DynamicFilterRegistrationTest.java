@@ -18,7 +18,7 @@ package org.ops4j.pax.web.service.spi.servlet.dynamic;
 import java.util.Collection;
 import java.util.EnumSet;
 
-import javax.servlet.DispatcherType;
+import jakarta.servlet.DispatcherType;
 
 import org.junit.Test;
 import org.ops4j.pax.web.service.spi.model.elements.FilterModel;

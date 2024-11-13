@@ -21,9 +21,9 @@ import java.util.Enumeration;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.ops4j.pax.web.service.PaxWebConstants;
 import org.ops4j.pax.web.service.WebContainerContext;
@@ -172,7 +172,7 @@ public class DefaultHttpContext implements WebContainerContext {
 	 * @return
 	 */
 	protected URL getResource(Bundle bundle, String name) {
-		// "name" is passed from javax.servlet.ServletContext.getResource() which always should start with a slash
+		// "name" is passed from jakarta.servlet.ServletContext.getResource() which always should start with a slash
 		final String normalizedName = Path.normalizeResourcePath(name);
 		LOG.trace("Searching bundle [" + bundle + "] for resource [" + normalizedName + "]");
 		return bundle.getResource(normalizedName);

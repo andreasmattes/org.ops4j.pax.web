@@ -139,7 +139,7 @@ public abstract class AbstractContextTracker<S> implements ServiceTrackerCustomi
 		//  - when registering #1 or #2, we should handle org.osgi.framework.ServiceFactory, so we never
 		//    dereference the service, but pass the ServiceReference to OsgiContextModel
 		//  - in #1 and #2, to get a service from the reference, we need a bundle context for the actual
-		//    Whiteboard service used (e.g., from a javax.servlet.Servlet)
+		//    Whiteboard service used (e.g., from a jakarta.servlet.Servlet)
 		//  - default implementation (which should always be available - unless overriden by same-named context
 		//    with higher rank) of ServletContextHelper must use proper bundle to implement methods like
 		//    getResource() or getResourcePaths(). Because custom version may do the same, it should always

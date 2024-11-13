@@ -17,7 +17,7 @@ package org.ops4j.pax.web.extender.samples.whiteboard.internal;
 
 import java.util.Dictionary;
 import java.util.Hashtable;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

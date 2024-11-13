@@ -16,12 +16,12 @@
 package org.ops4j.pax.web.service.jetty.internal;
 
 import java.lang.reflect.InvocationTargetException;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.UnavailableException;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.UnavailableException;
 
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.servlet.ServletHolder;

@@ -15,8 +15,8 @@
  */
 package org.ops4j.pax.web.samples.helloworld.jsp.internal;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
 
 import org.ops4j.pax.web.service.WebContainer;
 import org.osgi.framework.BundleActivator;

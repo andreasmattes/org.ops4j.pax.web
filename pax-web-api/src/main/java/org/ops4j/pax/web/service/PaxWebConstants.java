@@ -17,7 +17,7 @@
 package org.ops4j.pax.web.service;
 
 import java.net.JarURLConnection;
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.ops4j.pax.web.service.whiteboard.ContextMapping;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
@@ -64,26 +64,26 @@ public interface PaxWebConstants {
 	/** The only supported JSP servlet class name */
 	String DEFAULT_JSP_SERVLET_CLASS = "org.ops4j.pax.web.jsp.JspServlet";
 
-	/** The only supported {@link javax.servlet.ServletContainerInitializer} class that configures JSP engine */
+	/** The only supported {@link jakarta.servlet.ServletContainerInitializer} class that configures JSP engine */
 	String DEFAULT_JSP_SCI_CLASS = "org.ops4j.pax.web.jsp.JasperInitializer";
 
 	/**
-	 * The only supported {@link javax.servlet.ServletContainerInitializer} class that configures WebSocket
+	 * The only supported {@link jakarta.servlet.ServletContainerInitializer} class that configures WebSocket
 	 * container for Jetty
 	 */
 	String DEFAULT_WEBSOCKET_JETTY_SCI_CLASS = "org.eclipse.jetty.websocket.javax.server.config.JavaxWebSocketServletContainerInitializer";
 	/**
-	 * The only supported {@link javax.servlet.ServletContainerInitializer} class that configures WebSocket
+	 * The only supported {@link jakarta.servlet.ServletContainerInitializer} class that configures WebSocket
 	 * container for Tomcat
 	 */
 	String DEFAULT_WEBSOCKET_TOMCAT_SCI_CLASS = "org.apache.tomcat.websocket.server.WsSci";
 	/**
-	 * The only supported {@link javax.servlet.ServletContainerInitializer} class that configures WebSocket
+	 * The only supported {@link jakarta.servlet.ServletContainerInitializer} class that configures WebSocket
 	 * container for Undertow
 	 */
 	String DEFAULT_WEBSOCKET_UNDERTOW_SCI_CLASS = "org.ops4j.pax.web.service.undertow.websocket.internal.WebSocketsInitializer";
 	/**
-	 * The only supported {@link javax.servlet.ServletContainerInitializer} for generic configuration of
+	 * The only supported {@link jakarta.servlet.ServletContainerInitializer} for generic configuration of
 	 * WebSocket container
  	 */
 	String DEFAULT_WEBSOCKET_SCI_CLASS = "org.ops4j.pax.web.websocket.internal.PaxWebWebSocketsServletContainerInitializer";
@@ -248,11 +248,11 @@ public interface PaxWebConstants {
 	/**
 	 * Filter init param name for specifying a filter-mapping dispatch behaviour Must be a comma delimited string of:
 	 * <ul>
-	 *     <li>{@link javax.servlet.DispatcherType#REQUEST}</li>
-	 *     <li>{@link javax.servlet.DispatcherType#FORWARD}</li>
-	 *     <li>{@link javax.servlet.DispatcherType#INCLUDE}</li>
-	 *     <li>{@link javax.servlet.DispatcherType#ERROR}</li>
-	 *     <li>{@link javax.servlet.DispatcherType#ASYNC}</li>
+	 *     <li>{@link jakarta.servlet.DispatcherType#REQUEST}</li>
+	 *     <li>{@link jakarta.servlet.DispatcherType#FORWARD}</li>
+	 *     <li>{@link jakarta.servlet.DispatcherType#INCLUDE}</li>
+	 *     <li>{@link jakarta.servlet.DispatcherType#ERROR}</li>
+	 *     <li>{@link jakarta.servlet.DispatcherType#ASYNC}</li>
 	 * </ul>
 	 * <p>
 	 * values are not case sensitive.

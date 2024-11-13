@@ -15,7 +15,7 @@
  */
 package org.ops4j.pax.web.service.jetty.internal;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;

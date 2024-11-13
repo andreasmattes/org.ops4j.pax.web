@@ -17,11 +17,11 @@
 package org.ops4j.pax.web.jsp;
 
 import java.io.File;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.descriptor.JspConfigDescriptor;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspFactory;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.descriptor.JspConfigDescriptor;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.jsp.JspFactory;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;

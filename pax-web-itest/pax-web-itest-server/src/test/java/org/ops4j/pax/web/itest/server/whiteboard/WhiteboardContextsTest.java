@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Hashtable;
-import javax.servlet.Filter;
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Filter;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

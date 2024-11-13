@@ -18,7 +18,7 @@ package org.ops4j.pax.web.sample.websockethazelcast;
 import org.eclipse.jetty.websocket.servlet.WebSocketServlet;
 import org.eclipse.jetty.websocket.servlet.WebSocketServletFactory;
 
-import javax.servlet.annotation.WebServlet;
+import jakarta.servlet.annotation.WebServlet;
 
 /**
  * @author Jimmy Pannier

@@ -17,9 +17,9 @@ package org.ops4j.pax.web.service.spi.servlet;
 
 import java.util.Collections;
 import java.util.Enumeration;
-import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletContext;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletContext;
 
 import org.ops4j.pax.web.service.spi.model.elements.FilterModel;
 import org.osgi.framework.BundleContext;

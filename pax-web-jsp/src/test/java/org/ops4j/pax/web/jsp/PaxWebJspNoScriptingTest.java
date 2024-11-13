@@ -20,12 +20,12 @@ import java.io.File;
 import java.lang.reflect.Constructor;
 import java.util.Collection;
 import java.util.Collections;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.descriptor.JspConfigDescriptor;
-import javax.servlet.descriptor.JspPropertyGroupDescriptor;
-import javax.servlet.descriptor.TaglibDescriptor;
-import javax.servlet.jsp.JspFactory;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.descriptor.JspConfigDescriptor;
+import jakarta.servlet.descriptor.JspPropertyGroupDescriptor;
+import jakarta.servlet.descriptor.TaglibDescriptor;
+import jakarta.servlet.jsp.JspFactory;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;

@@ -17,7 +17,7 @@ package org.ops4j.pax.web.itest.container.whiteboard;
 
 import java.util.Hashtable;
 import javax.inject.Inject;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 import org.junit.Test;
 import org.ops4j.pax.web.itest.container.AbstractContainerTestBase;

@@ -29,19 +29,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import javax.servlet.DispatcherType;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpFilter;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpFilter;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import io.undertow.Handlers;
 import io.undertow.Undertow;
@@ -434,7 +434,7 @@ public class EmbeddedUndertowTest {
 		// "XNIO-1 task-1@2434" prio=5 tid=0x17 nid=NA runnable
 		//  java.lang.Thread.State: RUNNABLE
 		//      at org.ops4j.pax.web.service.undertow.internal.EmbeddedUndertowTest$2.service(EmbeddedUndertowTest.java:139)
-		//      at javax.servlet.http.HttpServlet.service(HttpServlet.java:590)
+		//      at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
 		//      at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:74)
 		//      at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:62)
 		//      at io.undertow.servlet.handlers.ServletChain$1.handleRequest(ServletChain.java:68)
@@ -1019,7 +1019,7 @@ public class EmbeddedUndertowTest {
 		// the problem with Undertow is that while we can add new servlets to existing "deployment", we can't
 		// remove them...
 		// "deploy" does few important things:
-		//  - creates instance of io.undertow.servlet.spec.ServletContextImpl (THE javax.servlet.ServletContext)
+		//  - creates instance of io.undertow.servlet.spec.ServletContextImpl (THE jakarta.servlet.ServletContext)
 		//  - creates instance of io.undertow.servlet.core.DeploymentImpl
 		//  - prepares all the "web elements" by turning "info" into "physical representation" of e.g., servlet
 		//     - e.g., io.undertow.servlet.api.ServletInfo is turned into io.undertow.servlet.core.ManagedServlet

@@ -16,8 +16,8 @@
 package org.ops4j.pax.web.service.whiteboard;
 
 import java.util.Map;
-import javax.servlet.DispatcherType;
-import javax.servlet.Filter;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.Filter;
 
 /**
  * <p><em>Filter mapping</em> contains all the information required to register a {@link Filter}.</p>

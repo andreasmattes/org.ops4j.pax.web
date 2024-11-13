@@ -32,9 +32,9 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import javax.servlet.DispatcherType;
-import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterConfig;
 
 import org.ops4j.pax.web.service.PaxWebConstants;
 import org.ops4j.pax.web.service.spi.model.OsgiContextModel;
@@ -74,8 +74,8 @@ public class FilterModel extends ElementModel<Filter, FilterEventData> {
 	private String[] flatDispatcherTypes;
 
 	/**
-	 * When using {@link javax.servlet.ServletContext#addFilter(String, Filter)} and
-	 * {@link javax.servlet.FilterRegistration.Dynamic#addMappingForServletNames(EnumSet, boolean, String...)} we
+	 * When using {@link jakarta.servlet.ServletContext#addFilter(String, Filter)} and
+	 * {@link jakarta.servlet.FilterRegistration.Dynamic#addMappingForServletNames(EnumSet, boolean, String...)} we
 	 * need to store distinct sets of mappings separately for different dispatchers (and order)
 	 */
 	private final List<DynamicMapping> dynamicUrlPatterns = new LinkedList<>();
@@ -107,7 +107,7 @@ public class FilterModel extends ElementModel<Filter, FilterEventData> {
 	private final Class<? extends Filter> filterClass;
 
 	/**
-	 * Flag used for models registered using {@link javax.servlet.ServletContext#addFilter}
+	 * Flag used for models registered using {@link jakarta.servlet.ServletContext#addFilter}
 	 */
 	private boolean dynamic = false;
 

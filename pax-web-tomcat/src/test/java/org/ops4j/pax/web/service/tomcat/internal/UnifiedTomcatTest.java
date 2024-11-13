@@ -26,11 +26,11 @@ import java.net.Socket;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.Engine;
@@ -575,18 +575,18 @@ public class UnifiedTomcatTest {
 				resp.getWriter().println("req.servlet_path=\"" + req.getServletPath() + "\"");
 				resp.getWriter().println("req.path_info=\"" + req.getPathInfo() + "\"");
 				resp.getWriter().println("req.query_string=\"" + req.getQueryString() + "\"");
-				resp.getWriter().println("javax.servlet.forward.mapping=\"" + req.getAttribute("javax.servlet.forward.mapping") + "\"");
-				resp.getWriter().println("javax.servlet.forward.request_uri=\"" + req.getAttribute("javax.servlet.forward.request_uri") + "\"");
-				resp.getWriter().println("javax.servlet.forward.context_path=\"" + req.getAttribute("javax.servlet.forward.context_path") + "\"");
-				resp.getWriter().println("javax.servlet.forward.servlet_path=\"" + req.getAttribute("javax.servlet.forward.servlet_path") + "\"");
-				resp.getWriter().println("javax.servlet.forward.path_info=\"" + req.getAttribute("javax.servlet.forward.path_info") + "\"");
-				resp.getWriter().println("javax.servlet.forward.query_string=\"" + req.getAttribute("javax.servlet.forward.query_string") + "\"");
-				resp.getWriter().println("javax.servlet.include.mapping=\"" + req.getAttribute("javax.servlet.include.mapping") + "\"");
-				resp.getWriter().println("javax.servlet.include.request_uri=\"" + req.getAttribute("javax.servlet.include.request_uri") + "\"");
-				resp.getWriter().println("javax.servlet.include.context_path=\"" + req.getAttribute("javax.servlet.include.context_path") + "\"");
-				resp.getWriter().println("javax.servlet.include.servlet_path=\"" + req.getAttribute("javax.servlet.include.servlet_path") + "\"");
-				resp.getWriter().println("javax.servlet.include.path_info=\"" + req.getAttribute("javax.servlet.include.path_info") + "\"");
-				resp.getWriter().println("javax.servlet.include.query_string=\"" + req.getAttribute("javax.servlet.include.query_string") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.mapping=\"" + req.getAttribute("jakarta.servlet.forward.mapping") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.request_uri=\"" + req.getAttribute("jakarta.servlet.forward.request_uri") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.context_path=\"" + req.getAttribute("jakarta.servlet.forward.context_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.servlet_path=\"" + req.getAttribute("jakarta.servlet.forward.servlet_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.path_info=\"" + req.getAttribute("jakarta.servlet.forward.path_info") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.query_string=\"" + req.getAttribute("jakarta.servlet.forward.query_string") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.mapping=\"" + req.getAttribute("jakarta.servlet.include.mapping") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.request_uri=\"" + req.getAttribute("jakarta.servlet.include.request_uri") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.context_path=\"" + req.getAttribute("jakarta.servlet.include.context_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.servlet_path=\"" + req.getAttribute("jakarta.servlet.include.servlet_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.path_info=\"" + req.getAttribute("jakarta.servlet.include.path_info") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.query_string=\"" + req.getAttribute("jakarta.servlet.include.query_string") + "\"");
 			}
 		};
 		indexxWrapper.setServlet(indexxServlet);
@@ -638,15 +638,15 @@ public class UnifiedTomcatTest {
 		response = send(port, "/");
 		assertTrue(response.contains("req.context_path=\"\""));
 		assertTrue(response.contains("req.request_uri=\"/index.y\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/\""));
 
 		// Forward vs. Include:
 		// in forward method:
-		//  - original servletPath, pathInfo, requestURI are available ONLY through javax.servlet.forward.* attributes
+		//  - original servletPath, pathInfo, requestURI are available ONLY through jakarta.servlet.forward.* attributes
 		//  - values used to obtain the dispatcher are available through request object
 		// in include method:
 		//  - original servletPath, pathInfo, requestURI are available through request object
-		//  - values used to obtain the dispatcher are available through javax.servlet.include.* attributes
+		//  - values used to obtain the dispatcher are available through jakarta.servlet.include.* attributes
 
 		// "/" (but through gateway) - similar forward, but performed explicitly by gateway servlet
 		// 9.4 The Forward Method:
@@ -656,20 +656,20 @@ public class UnifiedTomcatTest {
 		response = send(port, "/gateway/x?what=forward&where=/");
 		assertTrue(response.contains("req.context_path=\"\""));
 		assertTrue(response.contains("req.request_uri=\"/index.y\""));
-		assertTrue(response.contains("javax.servlet.forward.context_path=\"\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.forward.servlet_path=\"/gateway\""));
-		assertTrue(response.contains("javax.servlet.forward.path_info=\"/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.context_path=\"\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/gateway/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.servlet_path=\"/gateway\""));
+		assertTrue(response.contains("jakarta.servlet.forward.path_info=\"/x\""));
 
 		// "/", but included by gateway servlet
 		// "gateway" includes "/" which includes "/index.y"
 		response = send(port, "/gateway/x?what=include&where=/");
 		assertTrue(response.contains("req.context_path=\"\""));
 		assertTrue(response.contains("req.request_uri=\"/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.include.context_path=\"\""));
-		assertTrue(response.contains("javax.servlet.include.request_uri=\"/index.y\""));
-		assertTrue(response.contains("javax.servlet.include.servlet_path=\"/index.y\""));
-		assertTrue(response.contains("javax.servlet.include.path_info=\"null\""));
+		assertTrue(response.contains("jakarta.servlet.include.context_path=\"\""));
+		assertTrue(response.contains("jakarta.servlet.include.request_uri=\"/index.y\""));
+		assertTrue(response.contains("jakarta.servlet.include.servlet_path=\"/index.y\""));
+		assertTrue(response.contains("jakarta.servlet.include.path_info=\"null\""));
 
 		response = send(port, "/sub");
 		assertTrue(response.startsWith("HTTP/1.1 302"));
@@ -695,26 +695,26 @@ public class UnifiedTomcatTest {
 		response = send(port, "/sub/");
 		assertTrue(response.contains("req.context_path=\"\""));
 		assertTrue(response.contains("req.request_uri=\"/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.forward.context_path=\"\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/sub/\""));
-		assertTrue(response.contains("javax.servlet.forward.servlet_path=\"/sub/\""));
-		assertTrue(response.contains("javax.servlet.forward.path_info=\"null\""));
+		assertTrue(response.contains("jakarta.servlet.forward.context_path=\"\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/sub/\""));
+		assertTrue(response.contains("jakarta.servlet.forward.servlet_path=\"/sub/\""));
+		assertTrue(response.contains("jakarta.servlet.forward.path_info=\"null\""));
 
 		response = send(port, "/gateway/x?what=forward&where=/sub/");
 		assertTrue(response.contains("req.context_path=\"\""));
 		assertTrue(response.contains("req.request_uri=\"/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.forward.context_path=\"\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.forward.servlet_path=\"/gateway\""));
-		assertTrue(response.contains("javax.servlet.forward.path_info=\"/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.context_path=\"\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/gateway/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.servlet_path=\"/gateway\""));
+		assertTrue(response.contains("jakarta.servlet.forward.path_info=\"/x\""));
 
 		response = send(port, "/gateway/x?what=include&where=/sub/");
 		assertTrue(response.contains("req.context_path=\"\""));
 		assertTrue(response.contains("req.request_uri=\"/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.include.context_path=\"\""));
-		assertTrue(response.contains("javax.servlet.include.request_uri=\"/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.include.servlet_path=\"/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.include.path_info=\"null\""));
+		assertTrue(response.contains("jakarta.servlet.include.context_path=\"\""));
+		assertTrue(response.contains("jakarta.servlet.include.request_uri=\"/sub/index.x\""));
+		assertTrue(response.contains("jakarta.servlet.include.servlet_path=\"/sub/index.x\""));
+		assertTrue(response.contains("jakarta.servlet.include.path_info=\"null\""));
 
 		// --- resource access through "/r" servlet
 
@@ -909,18 +909,18 @@ public class UnifiedTomcatTest {
 				resp.getWriter().println("req.servlet_path=\"" + req.getServletPath() + "\"");
 				resp.getWriter().println("req.path_info=\"" + req.getPathInfo() + "\"");
 				resp.getWriter().println("req.query_string=\"" + req.getQueryString() + "\"");
-				resp.getWriter().println("javax.servlet.forward.mapping=\"" + req.getAttribute("javax.servlet.forward.mapping") + "\"");
-				resp.getWriter().println("javax.servlet.forward.request_uri=\"" + req.getAttribute("javax.servlet.forward.request_uri") + "\"");
-				resp.getWriter().println("javax.servlet.forward.context_path=\"" + req.getAttribute("javax.servlet.forward.context_path") + "\"");
-				resp.getWriter().println("javax.servlet.forward.servlet_path=\"" + req.getAttribute("javax.servlet.forward.servlet_path") + "\"");
-				resp.getWriter().println("javax.servlet.forward.path_info=\"" + req.getAttribute("javax.servlet.forward.path_info") + "\"");
-				resp.getWriter().println("javax.servlet.forward.query_string=\"" + req.getAttribute("javax.servlet.forward.query_string") + "\"");
-				resp.getWriter().println("javax.servlet.include.mapping=\"" + req.getAttribute("javax.servlet.include.mapping") + "\"");
-				resp.getWriter().println("javax.servlet.include.request_uri=\"" + req.getAttribute("javax.servlet.include.request_uri") + "\"");
-				resp.getWriter().println("javax.servlet.include.context_path=\"" + req.getAttribute("javax.servlet.include.context_path") + "\"");
-				resp.getWriter().println("javax.servlet.include.servlet_path=\"" + req.getAttribute("javax.servlet.include.servlet_path") + "\"");
-				resp.getWriter().println("javax.servlet.include.path_info=\"" + req.getAttribute("javax.servlet.include.path_info") + "\"");
-				resp.getWriter().println("javax.servlet.include.query_string=\"" + req.getAttribute("javax.servlet.include.query_string") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.mapping=\"" + req.getAttribute("jakarta.servlet.forward.mapping") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.request_uri=\"" + req.getAttribute("jakarta.servlet.forward.request_uri") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.context_path=\"" + req.getAttribute("jakarta.servlet.forward.context_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.servlet_path=\"" + req.getAttribute("jakarta.servlet.forward.servlet_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.path_info=\"" + req.getAttribute("jakarta.servlet.forward.path_info") + "\"");
+				resp.getWriter().println("jakarta.servlet.forward.query_string=\"" + req.getAttribute("jakarta.servlet.forward.query_string") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.mapping=\"" + req.getAttribute("jakarta.servlet.include.mapping") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.request_uri=\"" + req.getAttribute("jakarta.servlet.include.request_uri") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.context_path=\"" + req.getAttribute("jakarta.servlet.include.context_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.servlet_path=\"" + req.getAttribute("jakarta.servlet.include.servlet_path") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.path_info=\"" + req.getAttribute("jakarta.servlet.include.path_info") + "\"");
+				resp.getWriter().println("jakarta.servlet.include.query_string=\"" + req.getAttribute("jakarta.servlet.include.query_string") + "\"");
 			}
 		};
 		indexxWrapper.setServlet(indexxServlet);
@@ -972,15 +972,15 @@ public class UnifiedTomcatTest {
 		response = send(port, "/c/");
 		assertTrue(response.contains("req.context_path=\"/c\""));
 		assertTrue(response.contains("req.request_uri=\"/c/index.y\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/c/\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/c/\""));
 
 		// Forward vs. Include:
 		// in forward method:
-		//  - original servletPath, pathInfo, requestURI are available ONLY through javax.servlet.forward.* attributes
+		//  - original servletPath, pathInfo, requestURI are available ONLY through jakarta.servlet.forward.* attributes
 		//  - values used to obtain the dispatcher are available through request object
 		// in include method:
 		//  - original servletPath, pathInfo, requestURI are available through request object
-		//  - values used to obtain the dispatcher are available through javax.servlet.include.* attributes
+		//  - values used to obtain the dispatcher are available through jakarta.servlet.include.* attributes
 
 		// "/" (but through gateway) - similar forward, but performed explicitly by gateway servlet
 		// 9.4 The Forward Method:
@@ -990,20 +990,20 @@ public class UnifiedTomcatTest {
 		response = send(port, "/c/gateway/x?what=forward&where=/");
 		assertTrue(response.contains("req.context_path=\"/c\""));
 		assertTrue(response.contains("req.request_uri=\"/c/index.y\""));
-		assertTrue(response.contains("javax.servlet.forward.context_path=\"/c\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/c/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.forward.servlet_path=\"/gateway\""));
-		assertTrue(response.contains("javax.servlet.forward.path_info=\"/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.context_path=\"/c\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/c/gateway/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.servlet_path=\"/gateway\""));
+		assertTrue(response.contains("jakarta.servlet.forward.path_info=\"/x\""));
 
 		// "/", but included by gateway servlet
 		// "gateway" includes "/" which includes "/index.y"
 		response = send(port, "/c/gateway/x?what=include&where=/");
 		assertTrue(response.contains("req.context_path=\"/c\""));
 		assertTrue(response.contains("req.request_uri=\"/c/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.include.context_path=\"/c\""));
-		assertTrue(response.contains("javax.servlet.include.request_uri=\"/c/index.y\""));
-		assertTrue(response.contains("javax.servlet.include.servlet_path=\"/index.y\""));
-		assertTrue(response.contains("javax.servlet.include.path_info=\"null\""));
+		assertTrue(response.contains("jakarta.servlet.include.context_path=\"/c\""));
+		assertTrue(response.contains("jakarta.servlet.include.request_uri=\"/c/index.y\""));
+		assertTrue(response.contains("jakarta.servlet.include.servlet_path=\"/index.y\""));
+		assertTrue(response.contains("jakarta.servlet.include.path_info=\"null\""));
 
 		response = send(port, "/c/sub");
 		assertTrue(response.startsWith("HTTP/1.1 302"));
@@ -1029,26 +1029,26 @@ public class UnifiedTomcatTest {
 		response = send(port, "/c/sub/");
 		assertTrue(response.contains("req.context_path=\"/c\""));
 		assertTrue(response.contains("req.request_uri=\"/c/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.forward.context_path=\"/c\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/c/sub/\""));
-		assertTrue(response.contains("javax.servlet.forward.servlet_path=\"/sub/\""));
-		assertTrue(response.contains("javax.servlet.forward.path_info=\"null\""));
+		assertTrue(response.contains("jakarta.servlet.forward.context_path=\"/c\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/c/sub/\""));
+		assertTrue(response.contains("jakarta.servlet.forward.servlet_path=\"/sub/\""));
+		assertTrue(response.contains("jakarta.servlet.forward.path_info=\"null\""));
 
 		response = send(port, "/c/gateway/x?what=forward&where=/sub/");
 		assertTrue(response.contains("req.context_path=\"/c\""));
 		assertTrue(response.contains("req.request_uri=\"/c/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.forward.context_path=\"/c\""));
-		assertTrue(response.contains("javax.servlet.forward.request_uri=\"/c/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.forward.servlet_path=\"/gateway\""));
-		assertTrue(response.contains("javax.servlet.forward.path_info=\"/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.context_path=\"/c\""));
+		assertTrue(response.contains("jakarta.servlet.forward.request_uri=\"/c/gateway/x\""));
+		assertTrue(response.contains("jakarta.servlet.forward.servlet_path=\"/gateway\""));
+		assertTrue(response.contains("jakarta.servlet.forward.path_info=\"/x\""));
 
 		response = send(port, "/c/gateway/x?what=include&where=/sub/");
 		assertTrue(response.contains("req.context_path=\"/c\""));
 		assertTrue(response.contains("req.request_uri=\"/c/gateway/x\""));
-		assertTrue(response.contains("javax.servlet.include.context_path=\"/c\""));
-		assertTrue(response.contains("javax.servlet.include.request_uri=\"/c/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.include.servlet_path=\"/sub/index.x\""));
-		assertTrue(response.contains("javax.servlet.include.path_info=\"null\""));
+		assertTrue(response.contains("jakarta.servlet.include.context_path=\"/c\""));
+		assertTrue(response.contains("jakarta.servlet.include.request_uri=\"/c/sub/index.x\""));
+		assertTrue(response.contains("jakarta.servlet.include.servlet_path=\"/sub/index.x\""));
+		assertTrue(response.contains("jakarta.servlet.include.path_info=\"null\""));
 
 		// --- resource access through "/r" servlet
 
@@ -1240,7 +1240,7 @@ public class UnifiedTomcatTest {
 		//     - path info = "/"
 		//     - servlet path == ""
 		//     - context path == ""
-		//     - match type = javax.servlet.http.MappingMatch.CONTEXT_ROOT
+		//     - match type = jakarta.servlet.http.MappingMatch.CONTEXT_ROOT
 		rootContext.addServletMappingDecoded("", wrapper1.getName(), false);
 
 		// A string containing only the '/' character indicates the "default" servlet of the application.
@@ -1266,15 +1266,15 @@ public class UnifiedTomcatTest {
 
 		// Tomcat mapping is done in 3 stages:
 		// - host finding: org.apache.catalina.connector.CoyoteAdapter.postParseRequest()
-		//    - javax.servlet.ServletRequest.getServerName() is set to match "Host" HTTP header
-		//    - javax.servlet.ServletRequest.getLocalName() is set to result of:
+		//    - jakarta.servlet.ServletRequest.getServerName() is set to match "Host" HTTP header
+		//    - jakarta.servlet.ServletRequest.getLocalName() is set to result of:
 		//       - NIO: java.net.Socket.getLocalAddress().getHostName()
 		//       - NIO2: java.nio.channels.AsynchronousSocketChannel.getLocalAddress().getHostName()
 		//       - APR: org.apache.tomcat.jni.Address.getnameinfo()
 		//    - org.apache.catalina.connector.Connector.getUseIPVHosts() == true
-		//       - host is chosed directly from javax.servlet.ServletRequest.getLocalName()
+		//       - host is chosed directly from jakarta.servlet.ServletRequest.getLocalName()
 		//    - org.apache.catalina.connector.Connector.getUseIPVHosts() == false
-		//       - host is chosed directly from javax.servlet.ServletRequest.getServerName()
+		//       - host is chosed directly from jakarta.servlet.ServletRequest.getServerName()
 		//    - it defaults to what's set in org.apache.catalina.Engine.setDefaultHost()
 		// - context finding: org.apache.catalina.mapper.Mapper.internalMap()
 		//    - org.apache.catalina.mapper.Mapper.MappedHost.contextList is searched
@@ -1285,7 +1285,7 @@ public class UnifiedTomcatTest {
 		//       1 = {org.apache.catalina.mapper.Mapper$MappedContext@3458}
 		//        name: java.lang.String  = "/c1"
 		//    - the array (it is sorted) is searched by incoming URI
-		//    - the found context's path is available as javax.servlet.http.HttpServletRequest.getContextPath()
+		//    - the found context's path is available as jakarta.servlet.http.HttpServletRequest.getContextPath()
 		// - servlet finding: inside org.apache.catalina.mapper.Mapper.internalMapWrapper()
 		//    - org.apache.catalina.mapper.Mapper.ContextVersion.exactWrappers are searched first
 		//      contextVersion.exactWrappers = {org.apache.catalina.mapper.Mapper$MappedWrapper[2]@3722}
@@ -1326,7 +1326,7 @@ public class UnifiedTomcatTest {
 		// - org.apache.catalina.core.StandardContextValve.invoke()
 		//    - requires existing org.apache.catalina.connector.Request.getWrapper()
 		// - org.apache.catalina.core.StandardWrapperValve.invoke()
-		//    - important org.apache.catalina.core.StandardWrapper.allocate() call that returns a javax.servlet.Servlet
+		//    - important org.apache.catalina.core.StandardWrapper.allocate() call that returns a jakarta.servlet.Servlet
 		//    - org.apache.catalina.connector.Request.getFilterChain() is called inside static
 		//      org.apache.catalina.core.ApplicationFilterFactory.createFilterChain(), so it'd be better to set
 		//      such filter chain earlier. the same static method determines the filters to use and calls

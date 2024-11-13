@@ -16,8 +16,8 @@
 package org.ops4j.pax.web.service;
 
 import java.util.Set;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.ops4j.pax.web.service.whiteboard.ContextRelated;
 import org.osgi.framework.Bundle;
@@ -28,7 +28,7 @@ import org.osgi.service.http.context.ServletContextHelper;
  * <p>{@link HttpContext} extension that adds:<ul>
  *     <li><em>identity</em> (String ID) to {@link HttpContext} (knowing that single bundle using such context
  *     is part of the identity)</li>
- *     <li>missing resource-access method matching {@link javax.servlet.ServletContext#getResourcePaths(String)}
+ *     <li>missing resource-access method matching {@link jakarta.servlet.ServletContext#getResourcePaths(String)}
  *     method.</li>
  *     <li><em>shared</em> flag</li>
  * </ul></p>
@@ -51,10 +51,10 @@ public interface WebContainerContext extends HttpContext {
 
 	/**
 	 * <p>Complement {@link HttpContext#getResource(String)} (that matches
-	 * {@link javax.servlet.ServletContext#getResource(String)}), so we have a method matching
-	 * {@link javax.servlet.ServletContext#getResourcePaths(String)}.</p>
+	 * {@link jakarta.servlet.ServletContext#getResource(String)}), so we have a method matching
+	 * {@link jakarta.servlet.ServletContext#getResourcePaths(String)}.</p>
 	 *
-	 * <p>from {@link javax.servlet.ServletContext} javadoc: Returns a set of all the paths (String objects)
+	 * <p>from {@link jakarta.servlet.ServletContext} javadoc: Returns a set of all the paths (String objects)
 	 * to entries within the web application whose longest sub-path matches the supplied path argument.
 	 * A specified path of "/" indicates the root of the web application.</p>
 	 *
@@ -68,18 +68,18 @@ public interface WebContainerContext extends HttpContext {
 	 * {@code /WEB-INF/lib/*.jar!/META-INF/resources/} if the bundle is WAB.</p>
 	 *
 	 * @param path the path name for which to return resource paths. Just as in
-	 *        {@link javax.servlet.ServletContext#getResourcePaths(String)}, the path <em>must</em> start with {@code /}
+	 *        {@link jakarta.servlet.ServletContext#getResourcePaths(String)}, the path <em>must</em> start with {@code /}
 	 * @return a set of the resource paths (String objects) or null if no resource paths could be found or if
 	 *         the caller does not have the appropriate permissions.
 	 */
 	Set<String> getResourcePaths(String path);
 
 	/**
-	 * <p>Method matching {@link javax.servlet.ServletContext#getRealPath(String)} and
+	 * <p>Method matching {@link jakarta.servlet.ServletContext#getRealPath(String)} and
 	 * {@link org.osgi.service.http.context.ServletContextHelper#getRealPath(String)}, but not available in
 	 * original {@link HttpContext}.</p>
 	 *
-	 * <p>As in Javadoc for {@link javax.servlet.ServletContext#getRealPath(String)}:
+	 * <p>As in Javadoc for {@link jakarta.servlet.ServletContext#getRealPath(String)}:
 	 * Resources inside the <tt>/META-INF/resources</tt> directories of JAR files bundled in the application's
 	 * <tt>/WEB-INF/lib</tt> directory must be considered only if the container has unpacked them from their containing
 	 * JAR file, in which case the path to the unpacked location must be returned.

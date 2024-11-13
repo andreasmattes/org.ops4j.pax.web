@@ -31,18 +31,18 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import javax.servlet.Filter;
-import javax.servlet.FilterRegistration;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextAttributeEvent;
-import javax.servlet.ServletContextAttributeListener;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.SessionTrackingMode;
-import javax.servlet.descriptor.JspConfigDescriptor;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterRegistration;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextAttributeEvent;
+import jakarta.servlet.ServletContextAttributeListener;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRegistration;
+import jakarta.servlet.SessionCookieConfig;
+import jakarta.servlet.SessionTrackingMode;
+import jakarta.servlet.descriptor.JspConfigDescriptor;
 
 import org.ops4j.pax.web.service.PaxWebConstants;
 import org.ops4j.pax.web.service.WebContainerContext;
@@ -242,7 +242,7 @@ public class OsgiServletContext implements ServletContext {
 	}
 
 	/**
-	 * This method removes the attributes set by {@link javax.servlet.ServletContainerInitializer SCIs} in previous
+	 * This method removes the attributes set by {@link jakarta.servlet.ServletContainerInitializer SCIs} in previous
 	 * restart of the context.
 	 */
 	public void clearAttributesFromPreviousCycle() {
@@ -303,14 +303,14 @@ public class OsgiServletContext implements ServletContext {
 
 	/**
 	 * This will mark the {@link OsgiServletContext} as a context that still alows for dynamic registration, but
-	 * not if the listener implements {@link javax.servlet.ServletContextListener}
+	 * not if the listener implements {@link jakarta.servlet.ServletContextListener}
 	 */
 	public void noMoreServletContextListeners() {
 		this.acceptsServletContextListeners = false;
 	}
 
 	/**
-	 * Can {@link javax.servlet.ServletContextListener} be registered?
+	 * Can {@link jakarta.servlet.ServletContextListener} be registered?
 	 * @return
 	 */
 	public boolean acceptsServletContextListeners() {
@@ -319,7 +319,7 @@ public class OsgiServletContext implements ServletContext {
 
 	/**
 	 * This method should be called with the associated context starts, so SCIs can register
-	 * {@link javax.servlet.ServletContextListener} listeners
+	 * {@link jakarta.servlet.ServletContextListener} listeners
 	 */
 	public void allowServletContextListeners() {
 		this.acceptsServletContextListeners = true;
@@ -698,7 +698,7 @@ public class OsgiServletContext implements ServletContext {
 		// ServletContextHelper is roughly compatible, we'll leave it as is - but still we need to support a case
 		// when a WAB is installed, but then, higher-ranked ServletContextHelper is registered for WABs context path.
 
-		// special javax.faces.FACELETS_LIBRARIES handling
+		// special jakarta.faces.FACELETS_LIBRARIES handling
 		@SuppressWarnings("unchecked")
 		Map<String, URL> mapping = (Map<String, URL>) osgiContextModel.getInitialContextAttributes()
 				.get(PaxWebConstants.CONTEXT_PARAM_PAX_WEB_FACELETS_LIBRARIES);

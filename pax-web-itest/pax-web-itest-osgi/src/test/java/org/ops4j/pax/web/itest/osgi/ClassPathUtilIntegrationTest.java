@@ -63,7 +63,7 @@ public class ClassPathUtilIntegrationTest extends AbstractOsgiTestBase {
 				// to do it's job (like scanning for resources)
 				mavenBundle("org.ops4j.pax.web.samples", "pax-web-spi-fragment").versionAsInProject().noStart(),
 
-				// bundle and two fragments to perform searching of /META-INF/services/javax.servlet.ServletContainerInitializer
+				// bundle and two fragments to perform searching of /META-INF/services/jakarta.servlet.ServletContainerInitializer
 				mavenBundle("org.ops4j.pax.web.samples", "initializers").versionAsInProject(),
 				mavenBundle("org.ops4j.pax.web.samples", "initializers-fragment1").versionAsInProject().noStart(),
 				mavenBundle("org.ops4j.pax.web.samples", "initializers-fragment2").versionAsInProject().noStart(),
@@ -553,7 +553,7 @@ public class ClassPathUtilIntegrationTest extends AbstractOsgiTestBase {
 		// if "true" was passed to org.ops4j.pax.web.utils.ClassPathUtil.getClassPathJars(), additionally:
 		// - Classpath JAR: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons2/8.0.0-SNAPSHOT
 		// - Classpath JAR: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons1/8.0.0-SNAPSHOT
-		// - Classpath JAR: mvn:javax.servlet/javax.servlet-api/4.0.1
+		// - Classpath JAR: mvn:jakarta.servlet/jakarta.servlet-api/4.0.1
 		//
 		// for Equinox:
 		// - === Classpath JARs for bundle org.ops4j.pax.web.samples.jsf-primefaces-embedded/8.0.0.SNAPSHOT
@@ -566,7 +566,7 @@ public class ClassPathUtilIntegrationTest extends AbstractOsgiTestBase {
 		// - Classpath JAR: jar:bundleentry://30.fwk1976804832/WEB-INF/lib/commons-digester-1.8.jar!/
 		// - Classpath JAR: jar:bundleentry://30.fwk1976804832/WEB-INF/lib/primefaces-7.0.jar!/
 		// if "true" was passed to org.ops4j.pax.web.utils.ClassPathUtil.getClassPathJars(), additionally:
-		// - Classpath JAR: mvn:javax.servlet/javax.servlet-api/4.0.1
+		// - Classpath JAR: mvn:jakarta.servlet/jakarta.servlet-api/4.0.1
 		// - Classpath JAR: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons1/8.0.0-SNAPSHOT
 		// - Classpath JAR: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons2/8.0.0-SNAPSHOT
 
@@ -602,7 +602,7 @@ public class ClassPathUtilIntegrationTest extends AbstractOsgiTestBase {
 		// -     Resolved MANIFEST.MF URL: jar:bundle://30.0:0/WEB-INF/lib/commons-digester-1.8.jar!/META-INF/MANIFEST.MF (null)
 		// - MANIFEST.MF URL: jar:bundle://30.0:0/WEB-INF/lib/primefaces-7.0.jar!/
 		// -     Resolved MANIFEST.MF URL: jar:bundle://30.0:0/WEB-INF/lib/primefaces-7.0.jar!/META-INF/MANIFEST.MF (org.primefaces)
-		// - Skipping MANIFEST.MF URL: mvn:javax.servlet/javax.servlet-api/4.0.1
+		// - Skipping MANIFEST.MF URL: mvn:jakarta.servlet/jakarta.servlet-api/4.0.1
 		// - Skipping MANIFEST.MF URL: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons2/8.0.0-SNAPSHOT
 		// - Skipping MANIFEST.MF URL: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons1/8.0.0-SNAPSHOT
 		//
@@ -661,7 +661,7 @@ public class ClassPathUtilIntegrationTest extends AbstractOsgiTestBase {
 		// -     Resolved MANIFEST.MF URL: jar:bundleentry://30.fwk540325452/WEB-INF/lib/commons-digester-1.8.jar!/META-INF/MANIFEST.MF (null)
 		// - MANIFEST.MF URL: jar:bundleentry://30.fwk540325452/WEB-INF/lib/primefaces-7.0.jar!/
 		// -     Resolved MANIFEST.MF URL: jar:bundleentry://30.fwk540325452/WEB-INF/lib/primefaces-7.0.jar!/META-INF/MANIFEST.MF (org.primefaces)
-		// - Skipping MANIFEST.MF URL: mvn:javax.servlet/javax.servlet-api/4.0.1
+		// - Skipping MANIFEST.MF URL: mvn:jakarta.servlet/jakarta.servlet-api/4.0.1
 		// - Skipping MANIFEST.MF URL: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons1/8.0.0-SNAPSHOT
 		// - Skipping MANIFEST.MF URL: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons2/8.0.0-SNAPSHOT
 
@@ -681,14 +681,14 @@ public class ClassPathUtilIntegrationTest extends AbstractOsgiTestBase {
 
 		// for Felix:
 		// - === Bundles in Classspace for bundle org.ops4j.pax.web.samples.jsf-primefaces-embedded/8.0.0.SNAPSHOT
-		// - ClassSpace bundle: mvn:javax.servlet/javax.servlet-api/4.0.1
+		// - ClassSpace bundle: mvn:jakarta.servlet/jakarta.servlet-api/4.0.1
 		// - ClassSpace bundle: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons1/8.0.0-SNAPSHOT
 		// - ClassSpace bundle: mvn:org.ops4j.pax.web.samples/jsf-primefaces-embedded-fragment/8.0.0-SNAPSHOT [fragment]
 		// - ClassSpace bundle: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons2/8.0.0-SNAPSHOT
 		//
 		// for Equinox:
 		// - === Bundles in Classspace for bundle org.ops4j.pax.web.samples.jsf-primefaces-embedded/8.0.0.SNAPSHOT
-		// - ClassSpace bundle: mvn:javax.servlet/javax.servlet-api/4.0.1
+		// - ClassSpace bundle: mvn:jakarta.servlet/jakarta.servlet-api/4.0.1
 		// - ClassSpace bundle: mvn:org.ops4j.pax.web.samples/jsf-primefaces-embedded-fragment/8.0.0-SNAPSHOT [fragment]
 		// - ClassSpace bundle: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons1/8.0.0-SNAPSHOT
 		// - ClassSpace bundle: mvn:org.ops4j.pax.web.samples/jsf-primefaces-commons2/8.0.0-SNAPSHOT
@@ -710,13 +710,13 @@ public class ClassPathUtilIntegrationTest extends AbstractOsgiTestBase {
 		// - === /META-INF/MANIFEST.MF loaded from bundles from Classspace for bundle org.ops4j.pax.web.samples.jsf-primefaces-embedded/8.0.0.SNAPSHOT
 		// - URL for /META-INF/MANIFEST.MF: bundle://33.0:1/META-INF/MANIFEST.MF (org.ops4j.pax.web.samples.jsf-primefaces-commons2)
 		// - URL for /META-INF/MANIFEST.MF: bundle://30.0:2/META-INF/MANIFEST.MF (org.apache.myfaces.core.api)
-		// - URL for /META-INF/MANIFEST.MF: bundle://17.0:1/META-INF/MANIFEST.MF (javax.servlet-api)
+		// - URL for /META-INF/MANIFEST.MF: bundle://17.0:1/META-INF/MANIFEST.MF (jakarta.servlet-api)
 		// - URL for /META-INF/MANIFEST.MF: bundle://32.0:1/META-INF/MANIFEST.MF (org.ops4j.pax.web.samples.jsf-primefaces-commons1)
 		//
 		// for Equinox:
 		// - === /META-INF/MANIFEST.MF loaded from bundles from Classspace for bundle org.ops4j.pax.web.samples.jsf-primefaces-embedded/8.0.0.SNAPSHOT
 		// - URL for /META-INF/MANIFEST.MF: bundleresource://30.fwk1561063579:1/META-INF/MANIFEST.MF (org.apache.myfaces.core.api)
-		// - URL for /META-INF/MANIFEST.MF: bundleresource://17.fwk1561063579/META-INF/MANIFEST.MF (javax.servlet-api)
+		// - URL for /META-INF/MANIFEST.MF: bundleresource://17.fwk1561063579/META-INF/MANIFEST.MF (jakarta.servlet-api)
 		// - URL for /META-INF/MANIFEST.MF: bundleresource://32.fwk1561063579/META-INF/MANIFEST.MF (org.ops4j.pax.web.samples.jsf-primefaces-commons1)
 		// - URL for /META-INF/MANIFEST.MF: bundleresource://33.fwk1561063579/META-INF/MANIFEST.MF (org.ops4j.pax.web.samples.jsf-primefaces-commons2)
 

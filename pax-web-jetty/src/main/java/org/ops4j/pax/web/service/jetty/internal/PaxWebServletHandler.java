@@ -26,15 +26,15 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import javax.security.auth.Subject;
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterChain;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.eclipse.jetty.security.DefaultUserIdentity;
 import org.eclipse.jetty.security.UserAuthentication;
@@ -166,7 +166,7 @@ public class PaxWebServletHandler extends ServletHandler {
 		} catch (MultiException e) {
 			// See https://github.com/ops4j/org.ops4j.pax.web/issues/1725
 			// we don't want entire context to become UNAVAILABLE just because some servlets/filters
-			// thrown javax.servlet.UnavailableException
+			// thrown jakarta.servlet.UnavailableException
 			// in OSGi it is quite common and we should handle exceptions like ClassNotFoundException
 			// in less fatal way
 			LOG.error(e.getMessage(), e);

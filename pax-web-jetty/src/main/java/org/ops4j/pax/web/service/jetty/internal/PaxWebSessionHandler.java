@@ -15,7 +15,7 @@
  */
 package org.ops4j.pax.web.service.jetty.internal;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.eclipse.jetty.server.session.SessionHandler;
 

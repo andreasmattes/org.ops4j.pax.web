@@ -26,12 +26,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.descriptor.JspConfigDescriptor;
-import javax.servlet.descriptor.JspPropertyGroupDescriptor;
-import javax.servlet.descriptor.TaglibDescriptor;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.SessionCookieConfig;
+import jakarta.servlet.descriptor.JspConfigDescriptor;
+import jakarta.servlet.descriptor.JspPropertyGroupDescriptor;
+import jakarta.servlet.descriptor.TaglibDescriptor;
 
 import org.ops4j.pax.web.service.PaxWebConstants;
 import org.ops4j.pax.web.service.WebContainerContext;
@@ -59,7 +59,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * <p>This class represents OSGi-specific {@link HttpContext}/{@link ServletContextHelper}
- * and points to single, server-specific {@link javax.servlet.ServletContext} and (at model level) to single
+ * and points to single, server-specific {@link jakarta.servlet.ServletContext} and (at model level) to single
  * {@link ServletContextModel}. It maps <em>directly</em> 1:1 to an OSGi service registered by user:<ul>
  *     <li>{@link HttpContext} with legacy Pax Web servier registration properties</li>
  *     <li>{@link ServletContextHelper} with standard properties and/or annotations</li>
@@ -120,7 +120,7 @@ import org.slf4j.LoggerFactory;
  *     ranking</li>
  *     <li>At actual server runtime level, each servlet is associated (through {@link ServletConfig#getServletContext()})
  *     with <em>own</em> {@link OsgiContextModel}, but there are things to do before actual request processing - like
- *     calling {@link javax.servlet.ServletContainerInitializer#onStartup(Set, ServletContext)} methods. Here, the
+ *     calling {@link jakarta.servlet.ServletContainerInitializer#onStartup(Set, ServletContext)} methods. Here, the
  *     {@link OsgiContextModel} passed to such calls is the highest ranked {@link OsgiContextModel} /
  *     {@link org.ops4j.pax.web.service.spi.servlet.OsgiServletContext} which may be different that the context
  *     associated with the servlets running in such context.</li>
@@ -523,9 +523,9 @@ public final class OsgiContextModel extends Identity implements Comparable<OsgiC
 	/**
 	 * <p>At {@link OsgiContextModel} level we track a list of {@link Change changes} that represent implicit
 	 * unregistrations of dynamic servlets/filters/listeners that may have been added for example inside
-	 * {@link javax.servlet.ServletContainerInitializer#onStartup(Set, ServletContext)} method.</p>
+	 * {@link jakarta.servlet.ServletContainerInitializer#onStartup(Set, ServletContext)} method.</p>
 	 *
-	 * <p>JavaEE doesn't bother with unregistration of such elements, but Pax Web does ;)</p>
+	 * <p>JakartaEE doesn't bother with unregistration of such elements, but Pax Web does ;)</p>
 	 *
 	 * @param unregistration
 	 */
@@ -687,7 +687,7 @@ public final class OsgiContextModel extends Identity implements Comparable<OsgiC
 	}
 
 	public void addJspPropertyGroupDescriptor(JspPropertyGroupDescriptor descriptor) {
-		// because javax.servlet.descriptor.JspConfigDescriptor may contain more property group descriptors, we
+		// because jakarta.servlet.descriptor.JspConfigDescriptor may contain more property group descriptors, we
 		// should implement some kind of identification. So descriptors are "same" if they share at least one
 		// URI pattern. In such case the property group is replaced, otherwise it is added.
 		for (Iterator<JspPropertyGroupDescriptor> it = jspConfiguration.getJspPropertyGroups().iterator(); it.hasNext(); ) {

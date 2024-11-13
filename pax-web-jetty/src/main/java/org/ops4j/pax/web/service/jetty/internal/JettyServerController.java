@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.HttpConfiguration;

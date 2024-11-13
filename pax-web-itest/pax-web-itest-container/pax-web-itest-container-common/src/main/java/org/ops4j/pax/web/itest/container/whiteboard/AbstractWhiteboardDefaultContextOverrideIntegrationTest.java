@@ -34,7 +34,7 @@ public abstract class AbstractWhiteboardDefaultContextOverrideIntegrationTest ex
 		configureAndWaitForServletWithMapping("/wb/*", () -> {
 			// registers org.osgi.service.http.context.ServletContextHelper
 			bundle2 = installAndStartBundle(sampleURI("whiteboard-2"));
-			// registers javax.servlet.Servlet and picks up the above related OsgiContextModel, which is not
+			// registers jakarta.servlet.Servlet and picks up the above related OsgiContextModel, which is not
 			// known to the runtime yet
 			bundle3 = installAndStartBundle(sampleURI("whiteboard-3"));
 

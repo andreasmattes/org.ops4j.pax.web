@@ -18,9 +18,9 @@ package org.ops4j.pax.web.extender.samples.whiteboard.internal;
 import java.util.Dictionary;
 import java.util.EventListener;
 import java.util.Hashtable;
-import javax.servlet.Filter;
-import javax.servlet.Servlet;
-import javax.servlet.http.HttpServlet;
+import jakarta.servlet.Filter;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.http.HttpServlet;
 
 import org.ops4j.pax.web.extender.whiteboard.runtime.DefaultErrorPageMapping;
 import org.ops4j.pax.web.extender.whiteboard.runtime.DefaultJspMapping;

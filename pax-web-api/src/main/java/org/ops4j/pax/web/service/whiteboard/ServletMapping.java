@@ -16,8 +16,8 @@
 package org.ops4j.pax.web.service.whiteboard;
 
 import java.util.Map;
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.Servlet;
+import jakarta.servlet.MultipartConfigElement;
+import jakarta.servlet.Servlet;
 
 /**
  * <p><em>Servlet mapping</em> contains all the information required to register a {@link Servlet} (either directly or

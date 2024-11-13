@@ -17,7 +17,7 @@ package org.ops4j.pax.web.itest.server.whiteboard;
 
 import java.io.FileNotFoundException;
 import java.util.Hashtable;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

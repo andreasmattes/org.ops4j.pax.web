@@ -44,10 +44,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import javax.servlet.Filter;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
+import jakarta.servlet.Filter;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
 
 import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
 import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
@@ -261,9 +261,9 @@ public class MultiContainerTestSupport {
 					.thenReturn(Collections.enumeration(Collections.singletonList(
 							org.ops4j.pax.web.jsp.JspServlet.class.getResource("/META-INF/services/javax.el.ExpressionFactory")))
 					);
-			when(jspBundle.getResources("META-INF/services/javax.servlet.ServletContainerInitializer"))
+			when(jspBundle.getResources("META-INF/services/jakarta.servlet.ServletContainerInitializer"))
 					.thenReturn(Collections.enumeration(Collections.singletonList(
-							org.ops4j.pax.web.jsp.JspServlet.class.getResource("/META-INF/services/javax.servlet.ServletContainerInitializer")))
+							org.ops4j.pax.web.jsp.JspServlet.class.getResource("/META-INF/services/jakarta.servlet.ServletContainerInitializer")))
 					);
 			when(jspBundle.loadClass(anyString()))
 					.thenAnswer(i -> JspServlet.class.getClassLoader().loadClass(i.getArgument(0, String.class)));
@@ -482,7 +482,7 @@ public class MultiContainerTestSupport {
 		}
 
 		try {
-			when(bundle.getResources("META-INF/services/javax.servlet.ServletContainerInitializer"))
+			when(bundle.getResources("META-INF/services/jakarta.servlet.ServletContainerInitializer"))
 					.thenReturn(Collections.emptyEnumeration());
 		} catch (IOException ignored) {
 		}

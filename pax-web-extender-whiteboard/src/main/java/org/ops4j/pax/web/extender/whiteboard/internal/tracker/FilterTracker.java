@@ -18,9 +18,9 @@ package org.ops4j.pax.web.extender.whiteboard.internal.tracker;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import javax.servlet.Filter;
-import javax.servlet.GenericFilter;
-import javax.servlet.http.HttpFilter;
+import jakarta.servlet.Filter;
+import jakarta.servlet.GenericFilter;
+import jakarta.servlet.http.HttpFilter;
 
 import org.ops4j.pax.web.extender.whiteboard.internal.WhiteboardExtenderContext;
 import org.ops4j.pax.web.service.PaxWebConstants;

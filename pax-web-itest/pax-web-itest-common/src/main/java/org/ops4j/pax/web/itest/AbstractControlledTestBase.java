@@ -901,7 +901,7 @@ public abstract class AbstractControlledTestBase {
 	}
 
 	/**
-	 * Creates a listener for deployment of named {@link javax.servlet.Servlet}.
+	 * Creates a listener for deployment of named {@link jakarta.servlet.Servlet}.
 	 * @param servletName
 	 * @param action
 	 */
@@ -934,7 +934,7 @@ public abstract class AbstractControlledTestBase {
 	}
 
 	/**
-	 * Creates a listener for deployment of a {@link javax.servlet.Servlet} mapped to some URL.
+	 * Creates a listener for deployment of a {@link jakarta.servlet.Servlet} mapped to some URL.
 	 * @param mapping
 	 * @param action
 	 */
@@ -967,7 +967,7 @@ public abstract class AbstractControlledTestBase {
 	}
 
 	/**
-	 * Creates a listener for deployment of a {@link javax.servlet.Filter} mapped to some URL.
+	 * Creates a listener for deployment of a {@link jakarta.servlet.Filter} mapped to some URL.
 	 * @param mapping
 	 * @param action
 	 */
@@ -1132,8 +1132,8 @@ public abstract class AbstractControlledTestBase {
 	}
 
 	/**
-	 * Creates {@link javax.servlet.Servlet} init parameters with legacy name that can be (which is deprecated, but
-	 * the only way with pure {@link HttpService} to specify servlet name) used to configure {@link javax.servlet.Servlet}
+	 * Creates {@link jakarta.servlet.Servlet} init parameters with legacy name that can be (which is deprecated, but
+	 * the only way with pure {@link HttpService} to specify servlet name) used to configure {@link jakarta.servlet.Servlet}
 	 * name.
 	 * @param servletName
 	 * @return

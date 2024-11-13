@@ -20,12 +20,12 @@ import java.net.URL;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.Servlet;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -936,7 +936,7 @@ public class WhiteboardAndHttpServiceTest extends MultiContainerTestSupport {
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			// result = {org.ops4j.pax.web.service.spi.servlet.OsgiScopedServletContext@4038}
 			// osgiContext: org.ops4j.pax.web.service.spi.servlet.OsgiServletContext  = {org.ops4j.pax.web.service.spi.servlet.OsgiServletContext@4041}
-			//  containerServletContext: javax.servlet.ServletContext  = {org.eclipse.jetty.servlet.ServletContextHandler$Context@4046} "ServletContext@o.e.j.s.ServletContextHandler@2dd29a59{/,null,AVAILABLE}"
+			//  containerServletContext: jakarta.servlet.ServletContext  = {org.eclipse.jetty.servlet.ServletContextHandler$Context@4046} "ServletContext@o.e.j.s.ServletContextHandler@2dd29a59{/,null,AVAILABLE}"
 			//  osgiContextModel: org.ops4j.pax.web.service.spi.model.OsgiContextModel  = {org.ops4j.pax.web.service.spi.model.OsgiContextModel@4047} "OsgiContextModel{id=OsgiContextModel-3,name='default',contextPath='/',context=null,bundle=Bundle "org.ops4j.pax.web.pax-web-extender-whiteboard"}"
 			//   LOG: org.slf4j.Logger  = {org.apache.logging.slf4j.Log4jLogger@4065}
 			//   DEFAULT_CONTEXT_MODEL: org.ops4j.pax.web.service.spi.model.OsgiContextModel  = {org.ops4j.pax.web.service.spi.model.OsgiContextModel@4047} "OsgiContextModel{id=OsgiContextModel-3,name='default',contextPath='/',context=null,bundle=Bundle "org.ops4j.pax.web.pax-web-extender-whiteboard"}"

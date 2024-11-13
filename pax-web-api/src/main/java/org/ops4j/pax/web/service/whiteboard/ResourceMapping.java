@@ -18,7 +18,7 @@ package org.ops4j.pax.web.service.whiteboard;
 import org.osgi.service.http.HttpContext;
 
 /**
- * <p>Resource mapping. Even if "resource handling" is perfomed by servlet container specific {@link javax.servlet.Servlet},
+ * <p>Resource mapping. Even if "resource handling" is perfomed by servlet container specific {@link jakarta.servlet.Servlet},
  * we don't extend {@link ServletMapping} because the servlet is provided by Pax Web itself. The most important field
  * is single <em>path</em> property, which is:<ul>
  *     <li>For HttpService: 2nd parameter to

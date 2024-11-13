@@ -16,7 +16,7 @@
 package org.ops4j.pax.web.service.whiteboard;
 
 import java.util.Map;
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.osgi.service.http.HttpContext;
 

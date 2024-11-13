@@ -19,13 +19,13 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.ops4j.pax.web.service.WebContainerContext;
 import org.osgi.framework.Bundle;
@@ -105,8 +105,8 @@ public class OsgiFilterChain implements FilterChain {
 					// - org.osgi.service.http.context.ServletContextHelper.REMOTE_USER
 					// - org.osgi.service.http.context.ServletContextHelper.AUTHENTICATION_TYPE
 					// into runtime-specific data available through:
-					// - javax.servlet.http.HttpServletRequest.getUserPrincipal()
-					// - javax.servlet.http.HttpServletRequest.getRemoteUser()
+					// - jakarta.servlet.http.HttpServletRequest.getUserPrincipal()
+					// - jakarta.servlet.http.HttpServletRequest.getRemoteUser()
 					authListener.accept(req);
 				}
 				// continue normally with normal filters and target servlet

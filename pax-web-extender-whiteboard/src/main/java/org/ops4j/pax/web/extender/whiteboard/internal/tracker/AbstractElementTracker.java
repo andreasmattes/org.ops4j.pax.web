@@ -40,14 +40,14 @@ import org.slf4j.LoggerFactory;
  * filters, listeners, ....</p>
  *
  * <p>The biggest change comparing to Pax Web 7 is that incoming {@link ServiceReference references} are NOT
- * dereferenced immediately. Dereferencing happens when the target element (e.g., {@link javax.servlet.Servlet}) needs
+ * dereferenced immediately. Dereferencing happens when the target element (e.g., {@link jakarta.servlet.Servlet}) needs
  * to be registered in target runtime - sometimes in one, sometimes in more target servlet contexts. If the service is
  * actually a {@link org.osgi.framework.ServiceFactory} or {@link org.osgi.framework.PrototypeServiceFactory},
  * this is a must.</p>
  *
  * @param <S> as in {@link ServiceTrackerCustomizer} is the type of the <em>incoming</em> service as registered by user
  * @param <R> is the type parameter of {@link ElementModel}. It's separate type, because both
- *        {@link javax.servlet.Servlet} and {@link org.ops4j.pax.web.service.whiteboard.ServletMapping} should be
+ *        {@link jakarta.servlet.Servlet} and {@link org.ops4j.pax.web.service.whiteboard.ServletMapping} should be
  *        tracked as {@link org.ops4j.pax.web.service.spi.model.elements.ServletModel}, which is
  *        {@code ElementModel<Servlet>}.
  * @param <D> type of {@link WebElementEventData} representing DTO/read-only object carrying information about
@@ -116,7 +116,7 @@ public abstract class AbstractElementTracker<S, R, D extends WebElementEventData
 	 *
 	 * <p>In Pax Web 8 we try to keep the service in the form of {@link ServiceReference} as long as possible, because
 	 * it may be a {@link org.osgi.framework.PrototypeServiceFactory} to be dereferenced when needed (possibly to
-	 * install e.g., a {@link javax.servlet.Servlet} into more than one {@link javax.servlet.ServletContext}).</p>
+	 * install e.g., a {@link jakarta.servlet.Servlet} into more than one {@link jakarta.servlet.ServletContext}).</p>
 	 *
 	 * @param serviceReference service reference for published service
 	 * @param serviceId

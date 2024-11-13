@@ -15,7 +15,7 @@
  */
 package org.ops4j.pax.web.itest.undertow.httpservice;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -17,9 +17,9 @@ package org.ops4j.pax.web.itest.server.controller;
 
 import java.util.Arrays;
 import java.util.Collections;
-import javax.servlet.Filter;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
+import jakarta.servlet.Filter;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

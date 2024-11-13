@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
-import javax.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServlet;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;

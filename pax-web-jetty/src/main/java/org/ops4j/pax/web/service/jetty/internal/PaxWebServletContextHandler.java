@@ -28,12 +28,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextEvent;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import org.eclipse.jetty.server.HandlerContainer;
 import org.eclipse.jetty.server.Request;
@@ -162,7 +162,7 @@ public class PaxWebServletContextHandler extends ServletContextHandler {
 
 	/**
 	 * We have to ensure that this {@link org.eclipse.jetty.server.handler.ContextHandler} will always return
-	 * proper instance of {@link javax.servlet.ServletContext} - especially in the events passed to listeners
+	 * proper instance of {@link jakarta.servlet.ServletContext} - especially in the events passed to listeners
 	 * @param osgiServletContext
 	 */
 	public void setOsgiServletContext(ServletContext osgiServletContext) {

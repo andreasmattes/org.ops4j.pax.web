@@ -30,10 +30,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.function.Supplier;
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
+import jakarta.servlet.MultipartConfigElement;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
 
 import org.ops4j.pax.web.service.PaxWebConstants;
 import org.ops4j.pax.web.service.spi.config.JspConfiguration;

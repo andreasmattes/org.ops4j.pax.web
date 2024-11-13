@@ -23,7 +23,7 @@
  * only as service properties (Whiteboard specification allows only the latter).</p>
  *
  * <p>Summarizing, <em>whiteboard</em> implementation in Pax Web allows registration of:<ul>
- *     <li>actual {@code javax.servlet} elements (servlet, filters, ...), where additional configuration is specified
+ *     <li>actual {@code jakarta.servlet} elements (servlet, filters, ...), where additional configuration is specified
  *     as service registration properties - as described in OSGi CMPN Whiteboard specification.</li>
  *     <li>OSGi services with interfaces ({@link org.osgi.framework.Constants#OBJECTCLASS}) from this package. This
  *     method may be called <em>explicit whiteboard approach</em> and is specific to Pax Web itself.</li>

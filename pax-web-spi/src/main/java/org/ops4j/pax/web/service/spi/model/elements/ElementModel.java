@@ -36,17 +36,17 @@ import org.osgi.framework.ServiceReference;
 
 /**
  * <p>Base class for all <em>models</em> representing actual elements of a <em>web application</em> (or
- * <em>context</em>), the most obvious <em>model</em> is representing {@link javax.servlet.Servlet}.</p>
+ * <em>context</em>), the most obvious <em>model</em> is representing {@link jakarta.servlet.Servlet}.</p>
  *
  * <p>What user does (through {@link org.osgi.service.http.HttpService} or by publishing Whiteboard services) is
  * a <em>registration</em> of web elements (like servlets) always within the context of ... well, a context
  * (possibly many, as permitted by Whiteboard Service specification).</p>
  *
  * <p>A <em>context</em> is not an element itself (thus - not a <em>model</em>), it's rather:<ul>
- *     <li>actual {@link javax.servlet.ServletContext} from server point of view</li>
+ *     <li>actual {@link jakarta.servlet.ServletContext} from server point of view</li>
  *     <li>OSGi abstraction ({@link org.osgi.service.http.HttpContext} or
  *     {@link org.osgi.service.http.context.ServletContextHelper}) providing additional/bridged functionality,
- *     when delegating some of it to actual {@link javax.servlet.ServletContext}</li>
+ *     when delegating some of it to actual {@link jakarta.servlet.ServletContext}</li>
  * </ul></p>
  *
  * <p>Each <em>element</em>, when registered through Whiteboard Service, may turn out to unregister some existing
@@ -95,7 +95,7 @@ public abstract class ElementModel<T, D extends WebElementEventData>
 	private boolean prototype = false;
 
 	/**
-	 * Because user may specify Whiteboard service (e.g., {@link javax.servlet.Servlet}) using <em>legacy</em> service
+	 * Because user may specify Whiteboard service (e.g., {@link jakarta.servlet.Servlet}) using <em>legacy</em> service
 	 * like {@link org.ops4j.pax.web.service.whiteboard.ServletMapping} we can't assume if method returning this
 	 * servlet returns a singleton or an instance on each call. So we wrap such
 	 * {@link org.ops4j.pax.web.service.whiteboard.ServletMapping} inside this {@link Supplier} to delay

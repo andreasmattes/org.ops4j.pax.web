@@ -37,15 +37,15 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.function.Supplier;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextAttributeListener;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletException;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.annotation.ServletSecurity;
-import javax.servlet.http.HttpSessionAttributeListener;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletContextAttributeListener;
+import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.SessionCookieConfig;
+import jakarta.servlet.annotation.ServletSecurity;
+import jakarta.servlet.http.HttpSessionAttributeListener;
 
 import org.eclipse.jetty.http.HttpCookie;
 import org.eclipse.jetty.http.MimeTypes;
@@ -202,7 +202,7 @@ class JettyServerWrapper implements BatchVisitor {
 
 	/**
 	 * 1:1 mapping between {@link OsgiContextModel} and {@link org.osgi.service.http.context.ServletContextHelper}'s
-	 * specific {@link javax.servlet.ServletContext}.
+	 * specific {@link jakarta.servlet.ServletContext}.
 	 */
 	private final Map<OsgiContextModel, OsgiServletContext> osgiServletContexts = new HashMap<>();
 

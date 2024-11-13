@@ -125,7 +125,7 @@ public interface BatchVisitor {
 	}
 
 	/**
-	 * Process a change related to reset of dynamic registrations (like {@link javax.servlet.ServletContext#addServlet}
+	 * Process a change related to reset of dynamic registrations (like {@link jakarta.servlet.ServletContext#addServlet}
 	 * @param change
 	 */
 	void visitClearDynamicRegistrationsChange(ClearDynamicRegistrationsChange change);

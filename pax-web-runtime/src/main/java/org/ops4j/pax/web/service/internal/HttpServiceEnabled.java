@@ -35,15 +35,15 @@ import java.util.TreeSet;
 import java.util.UUID;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import javax.servlet.Filter;
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletException;
-import javax.servlet.SessionCookieConfig;
-import javax.servlet.annotation.ServletSecurity;
-import javax.servlet.descriptor.JspPropertyGroupDescriptor;
-import javax.servlet.descriptor.TaglibDescriptor;
+import jakarta.servlet.Filter;
+import jakarta.servlet.MultipartConfigElement;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.SessionCookieConfig;
+import jakarta.servlet.annotation.ServletSecurity;
+import jakarta.servlet.descriptor.JspPropertyGroupDescriptor;
+import jakarta.servlet.descriptor.TaglibDescriptor;
 
 import org.ops4j.pax.web.annotations.PaxWebConfiguration;
 import org.ops4j.pax.web.annotations.PaxWebTesting;
@@ -290,7 +290,7 @@ public class HttpServiceEnabled implements WebContainer, StoppableHttpService {
 			return type.cast(directWebContainer);
 		}
 		if (type == DynamicJEEWebContainerView.class) {
-			// view used by javax.servlet.ServletContext.addServlet/Filter/Listener dynamic methods
+			// view used by jakarta.servlet.ServletContext.addServlet/Filter/Listener dynamic methods
 			// we'll reuse whiteboardContainerView, but cast it to different interface
 			return type.cast(whiteboardWebContainer);
 		}
@@ -1486,7 +1486,7 @@ public class HttpServiceEnabled implements WebContainer, StoppableHttpService {
 	public void registerJspConfigTagLibs(Collection<TaglibDescriptor> tagLibs, HttpContext httpContext) {
 		// This method contributes new TLD mappings to an OsgiServletContext associated with the passed httpContext.
 		// This is ineffective after the real context has started, but still the new list should be visible
-		// after calling javax.servlet.ServletContext.getJspConfigDescriptor().getTaglibs()
+		// after calling jakarta.servlet.ServletContext.getJspConfigDescriptor().getTaglibs()
 
 		// this method (and #registerJspConfigPropertyGroup() and the methods that configure session parameters)
 		// do not have to pass anything to ServerController, because all they do is configuration of
@@ -1834,7 +1834,7 @@ public class HttpServiceEnabled implements WebContainer, StoppableHttpService {
 
 					// we need *two* WebSocket SCIs:
 					//  - one is runtime specific that configures concrete implementation of
-					//    javax.websocket.server.ServerContainer inside servlet context. This SCI should *not* be passed
+					//    jakarta.websocket.server.ServerContainer inside servlet context. This SCI should *not* be passed
 					//    any classes to onStartup() method
 					//  - the other one is runtime agnostic and should be invoked AFTER the runtime-specific one and its
 					//    task should be actual registration of the WebSocket endpoint(s)
@@ -1934,7 +1934,7 @@ public class HttpServiceEnabled implements WebContainer, StoppableHttpService {
 						cimForGenericWSSupport.setRegisteringBundle(model.getRegisteringBundle());
 
 						// now the important part - according to JSR-356 (WebSockets), user is registering endpoints
-						// by passing an annotated class to javax.websocket.server.ServerContainer.addEndpoint(java.lang.Class<?>)
+						// by passing an annotated class to jakarta.websocket.server.ServerContainer.addEndpoint(java.lang.Class<?>)
 						// method. However here we're getting actual instance of the endpoint (but also we can get a class).
 						// So our SCI SHOULD be able to register already instantiated endpoints
 						if (sci instanceof ContainerInitializerModelAware) {

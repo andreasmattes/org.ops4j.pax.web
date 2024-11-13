@@ -16,12 +16,12 @@
  */
 package org.ops4j.pax.web.jsp;
 
-import javax.el.ELContext;
-import javax.el.ELManager;
-import javax.el.ELProcessor;
-import javax.el.ELResolver;
-import javax.el.ExpressionFactory;
-import javax.el.ValueExpression;
+import jakarta.el.ELContext;
+import jakarta.el.ELManager;
+import jakarta.el.ELProcessor;
+import jakarta.el.ELResolver;
+import jakarta.el.ExpressionFactory;
+import jakarta.el.ValueExpression;
 
 import org.junit.Test;
 import org.slf4j.Logger;

@@ -24,7 +24,7 @@ import org.ops4j.pax.web.service.MultiBundleWebContainerContext;
  * <p><em>Context</em> is something different in {@link org.osgi.service.http.HttpService} case (it's represented
  * by {@link org.osgi.service.http.HttpContext}) and in Whiteboard case (it's represented by
  * {@link org.osgi.service.http.context.ServletContextHelper}). In both cases, eventually this <em>context</em>
- * is actually backed by a real {@link javax.servlet.ServletContext} from Java Servlet API. Though it's not 1:1
+ * is actually backed by a real {@link jakarta.servlet.ServletContext} from Java Servlet API. Though it's not 1:1
  * relation...</p>
  *
  * <p>Both {@link org.osgi.service.http.HttpContext} and {@link org.osgi.service.http.context.ServletContextHelper}
@@ -38,7 +38,7 @@ import org.ops4j.pax.web.service.MultiBundleWebContainerContext;
  *     </li>
  * </ul></p>
  *
- * <p>The referenced <em>context</em> doesn't have to be unique wrt {@link javax.servlet.ServletContext}, there may be
+ * <p>The referenced <em>context</em> doesn't have to be unique wrt {@link jakarta.servlet.ServletContext}, there may be
  * many <em>contexts</em> registered (as mentioned above) for given <em>context path</em> but using different name.
  * Servlet (or e.g., filter) may be associated with one (or more)
  * {@link org.osgi.service.http.context.ServletContextHelper} (new Whiteboard) instance for given <em>context path</em>,
@@ -46,7 +46,7 @@ import org.ops4j.pax.web.service.MultiBundleWebContainerContext;
  * {@link org.osgi.service.http.context.ServletContextHelper} instances.</p>
  *
  * <p>Pax Web will unify behavior of Http Service and Whiteboard style <em>contexts</em> (knowing that underneath
- * there's actual, server-specific {@link javax.servlet.ServletContext}) and uniqueness will be checked by String ID
+ * there's actual, server-specific {@link jakarta.servlet.ServletContext}) and uniqueness will be checked by String ID
  * (and bundle for bundle-scoped access). Additionally for old-style {@link org.osgi.service.http.HttpContext},
  * a <em>shared</em> flag will be checked to determine whether context may be used by different bundles.
  * Whiteboard (new-style) <em>context</em> is <em>shared</em> by default.</p>

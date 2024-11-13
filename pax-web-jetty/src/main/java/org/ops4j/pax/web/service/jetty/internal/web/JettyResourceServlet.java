@@ -17,8 +17,8 @@ package org.ops4j.pax.web.service.jetty.internal.web;
 
 import java.io.IOException;
 import java.net.URL;
-import javax.servlet.ServletContext;
-import javax.servlet.UnavailableException;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.UnavailableException;
 
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.util.resource.PathResource;

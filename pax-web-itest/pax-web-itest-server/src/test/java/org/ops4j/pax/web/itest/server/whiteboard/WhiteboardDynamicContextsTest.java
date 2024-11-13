@@ -16,7 +16,7 @@
 package org.ops4j.pax.web.itest.server.whiteboard;
 
 import java.util.Hashtable;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +38,7 @@ import static org.ops4j.pax.web.itest.server.support.Utils.httpGET;
 
 /**
  * This is very complex test that checks how existing servlets, filters, listeners,
- * {@link javax.servlet.ServletContainerInitializer SCIs} behave when the highest-ranked
+ * {@link jakarta.servlet.ServletContainerInitializer SCIs} behave when the highest-ranked
  * {@link org.ops4j.pax.web.service.spi.servlet.OsgiServletContext} changes for given physical context
  * (identified by context path) or when contexts come and go during the lifetime of servlet registration.
  */
@@ -46,7 +46,7 @@ import static org.ops4j.pax.web.itest.server.support.Utils.httpGET;
 public class WhiteboardDynamicContextsTest extends MultiContainerTestSupport {
 
 	// CP - context path
-	// SC - javax.servlet.ServletContext
+	// SC - jakarta.servlet.ServletContext
 	// SCH - ServletContextHelper (CMPN 140)
 	// HC - HttpContext (CMPN 102)
 	// WCC - WebContainerContext (extension of HC)

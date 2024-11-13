@@ -15,9 +15,9 @@
  */
 package org.ops4j.pax.web.service.tomcat.internal;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 import org.apache.catalina.Container;
 import org.apache.catalina.LifecycleException;
@@ -174,7 +174,7 @@ public class PaxWebStandardWrapper extends StandardWrapper {
 	}
 
 	/**
-	 * This method is called from {@link javax.servlet.ServletConfig} passed to the servlet instance of this wrapper.
+	 * This method is called from {@link jakarta.servlet.ServletConfig} passed to the servlet instance of this wrapper.
 	 * Thus there's no need to create {@link OsgiInitializedServlet} wrapper around the servlet.
 	 * @return
 	 */

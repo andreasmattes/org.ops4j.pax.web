@@ -16,7 +16,7 @@
 package org.ops4j.pax.web.service.internal.views;
 
 import java.util.Collection;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.ops4j.pax.web.service.spi.model.elements.ErrorPageModel;
 import org.ops4j.pax.web.service.spi.model.elements.FilterModel;

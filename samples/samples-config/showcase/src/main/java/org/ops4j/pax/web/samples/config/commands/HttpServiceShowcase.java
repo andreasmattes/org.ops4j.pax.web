@@ -23,7 +23,7 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.karaf.shell.api.action.Action;
 import org.apache.karaf.shell.api.action.Argument;

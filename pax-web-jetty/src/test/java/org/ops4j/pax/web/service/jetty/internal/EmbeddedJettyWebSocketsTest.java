@@ -23,20 +23,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 import java.util.Set;
-import javax.websocket.ClientEndpointConfig;
-import javax.websocket.ContainerProvider;
-import javax.websocket.Endpoint;
-import javax.websocket.EndpointConfig;
-import javax.websocket.MessageHandler;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.RemoteEndpoint;
-import javax.websocket.Session;
-import javax.websocket.WebSocketContainer;
-import javax.websocket.server.ServerApplicationConfig;
-import javax.websocket.server.ServerContainer;
-import javax.websocket.server.ServerEndpoint;
-import javax.websocket.server.ServerEndpointConfig;
+import jakarta.websocket.ClientEndpointConfig;
+import jakarta.websocket.ContainerProvider;
+import jakarta.websocket.Endpoint;
+import jakarta.websocket.EndpointConfig;
+import jakarta.websocket.MessageHandler;
+import jakarta.websocket.OnMessage;
+import jakarta.websocket.OnOpen;
+import jakarta.websocket.RemoteEndpoint;
+import jakarta.websocket.Session;
+import jakarta.websocket.WebSocketContainer;
+import jakarta.websocket.server.ServerApplicationConfig;
+import jakarta.websocket.server.ServerContainer;
+import jakarta.websocket.server.ServerEndpoint;
+import jakarta.websocket.server.ServerEndpointConfig;
 
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.HttpConnectionFactory;
@@ -126,7 +126,7 @@ public class EmbeddedJettyWebSocketsTest {
 			// to which the developer may add MessageHandler implementations in order to intercept incoming websocket
 			// messages.
 			System.out.println("[s1] Session opened: " + session + ", with config: " + config);
-			// can't use javax.websocket 1.1 API with Jetty
+			// can't use jakarta.websocket 1.1 API with Jetty
 			session.addMessageHandler(new MessageHandler.Whole<String>() {
 				@Override
 				public void onMessage(String message) {
@@ -158,7 +158,7 @@ public class EmbeddedJettyWebSocketsTest {
 			System.out.println("[" + client + "] Session opened: " + session + ", with config: " + config);
 //			session.getUserProperties().put(Constants.IO_TIMEOUT_MS_PROPERTY, "3600000");
 			RemoteEndpoint.Basic remote = session.getBasicRemote();
-			// can't use javax.websocket 1.1 API with Jetty
+			// can't use jakarta.websocket 1.1 API with Jetty
 			session.addMessageHandler(new MessageHandler.Whole<String>() {
 				@Override
 				public void onMessage(String message) {

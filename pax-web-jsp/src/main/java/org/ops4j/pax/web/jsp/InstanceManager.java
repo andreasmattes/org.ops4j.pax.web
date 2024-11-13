@@ -29,9 +29,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.WeakHashMap;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.servlet.Filter;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.servlet.Filter;
 
 import org.apache.jasper.security.SecurityUtil;
 

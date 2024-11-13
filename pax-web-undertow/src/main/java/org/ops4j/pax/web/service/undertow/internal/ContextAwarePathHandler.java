@@ -16,7 +16,7 @@
 package org.ops4j.pax.web.service.undertow.internal;
 
 import java.util.Dictionary;
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 import io.undertow.Handlers;
 import io.undertow.server.HttpHandler;

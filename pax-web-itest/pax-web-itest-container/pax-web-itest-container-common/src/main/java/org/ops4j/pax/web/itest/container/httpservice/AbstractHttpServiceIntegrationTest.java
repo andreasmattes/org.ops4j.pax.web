@@ -18,8 +18,8 @@ package org.ops4j.pax.web.itest.container.httpservice;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
-import javax.servlet.Filter;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Filter;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.junit.Test;
 import org.ops4j.pax.web.itest.container.AbstractContainerTestBase;

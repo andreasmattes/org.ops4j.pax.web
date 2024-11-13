@@ -47,11 +47,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import javax.servlet.Filter;
-import javax.servlet.Servlet;
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.Filter;
+import jakarta.servlet.Servlet;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 import org.ops4j.pax.web.annotations.PaxWebConfiguration;
 import org.ops4j.pax.web.service.PaxWebConstants;
@@ -3483,9 +3483,9 @@ public class ServerModel implements BatchVisitor, HttpServiceRuntime, ReportView
 		//    and allows direct registration of web elements
 		//
 		// Whatever's the origin, every "web application" is about web elements registered into single implementation
-		// of javax.servlet.ServletContext (target runtime specific) which is uniquely identified by its context path.
+		// of jakarta.servlet.ServletContext (target runtime specific) which is uniquely identified by its context path.
 		// However in OSGi (all 3 origins), web elements are not directly registered there - there's an intermediate
-		// implementation of javax.servlet.ServletContext, common for all runtimes -
+		// implementation of jakarta.servlet.ServletContext, common for all runtimes -
 		// org.ops4j.pax.web.service.spi.servlet.OsgiServletContext. And from configuration perspective, there's
 		// 1:1 mapping with even more important object - org.ops4j.pax.web.service.spi.model.OsgiContextModel
 		//

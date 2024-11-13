@@ -16,7 +16,7 @@
 package org.ops4j.pax.web.service.spi.servlet;
 
 import java.util.Collection;
-import javax.servlet.descriptor.JspPropertyGroupDescriptor;
+import jakarta.servlet.descriptor.JspPropertyGroupDescriptor;
 
 public class DefaultJspPropertyGroupDescriptor implements JspPropertyGroupDescriptor {
 

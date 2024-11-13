@@ -15,8 +15,8 @@
  */
 package org.ops4j.pax.web.samples.whiteboard.ds;
 
-import javax.servlet.ServletRequestEvent;
-import javax.servlet.ServletRequestListener;
+import jakarta.servlet.ServletRequestEvent;
+import jakarta.servlet.ServletRequestListener;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;

@@ -21,8 +21,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.servlet.Filter;
-import javax.servlet.Servlet;
+import jakarta.servlet.Filter;
+import jakarta.servlet.Servlet;
 
 import org.ops4j.pax.web.extender.samples.whiteboard.Control;
 import org.ops4j.pax.web.service.PaxWebConstants;

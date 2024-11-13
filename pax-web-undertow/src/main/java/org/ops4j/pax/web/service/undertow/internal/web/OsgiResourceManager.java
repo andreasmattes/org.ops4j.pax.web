@@ -23,7 +23,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import io.undertow.server.handlers.resource.PathResource;
 import io.undertow.server.handlers.resource.PathResourceManager;
@@ -40,7 +40,7 @@ public class OsgiResourceManager implements ResourceManager {
 	public static final Logger LOG = LoggerFactory.getLogger(OsgiResourceManager.class);
 
 	/**
-	 * The {@link javax.servlet.ServletContext} which (according to OSGi CMPN web specifications) should delegate
+	 * The {@link jakarta.servlet.ServletContext} which (according to OSGi CMPN web specifications) should delegate
 	 * to {@link org.osgi.service.http.HttpContext} / {@link org.osgi.service.http.context.ServletContextHelper}.
 	 */
 	private final ServletContext osgiScopedServletContext;

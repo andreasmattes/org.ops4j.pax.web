@@ -16,10 +16,10 @@
 package org.ops4j.pax.web.service.spi.servlet;
 
 import java.security.Principal;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequestWrapper;
+import jakarta.servlet.http.HttpSession;
 
 import org.ops4j.pax.web.service.spi.model.OsgiContextModel;
 import org.osgi.service.http.context.ServletContextHelper;
