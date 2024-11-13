@@ -31,10 +31,10 @@
 		<bundle start-level="30" start="false">mvn:org.ops4j.pax.web/pax-web-compatibility-annotation13/${project.version}</bundle>
 		<!-- EL API and osgi.contract=JavaEL, versions 3.0, 2.2, 2.1, 2.0, 1.0 -->
 		<bundle start-level="30">mvn:jakarta.el/jakarta.el-api/${dependency.jakarta.el-api}</bundle>
-		<bundle start-level="30" start="false">mvn:org.ops4j.pax.web/pax-web-compatibility-el2/${project.version}</bundle>
+		<!-- <bundle start-level="30" start="false">mvn:org.ops4j.pax.web/pax-web-compatibility-el2/${project.version}</bundle> -->
 		<!-- Servlet API and osgi.contract=JavaServlet, versions 4.0, 3.1, 3.0, 2.6 -->
 		<bundle start-level="30">mvn:jakarta.servlet/jakarta.servlet-api/${dependency.jakarta.servlet-api}</bundle>
-		<bundle start-level="30" start="false">mvn:org.ops4j.pax.web/pax-web-compatibility-servlet31/${project.version}</bundle>
+		<!-- <bundle start-level="30" start="false">mvn:org.ops4j.pax.web/pax-web-compatibility-servlet31/${project.version}</bundle> -->
 	</feature>
 
 	<feature name="pax-web-core" description="Core Pax Web bundles" version="${project.version}">
@@ -63,7 +63,7 @@
 		possible to install respective "pax-web-*-websockets" features to provide WebSockets (JSR 356) support
 	-->
 
-	<feature name="pax-web-jetty" description="Jetty 9 bundles" version="${dependency.org.eclipse.jetty}">
+	<feature name="pax-web-jetty" description="Jetty 12 bundles" version="${dependency.org.eclipse.jetty}">
 		<bundle start-level="30" dependency="true">mvn:jakarta.servlet/jakarta.servlet-api/${dependency.jakarta.servlet-api}</bundle>
 
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-client/${dependency.org.eclipse.jetty}</bundle>
@@ -74,14 +74,14 @@
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-http/${dependency.org.eclipse.jetty}</bundle>
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-xml/${dependency.org.eclipse.jetty}</bundle>
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-server/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-servlet/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-servlets/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.ee10/jetty-ee10-servlet/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.ee10/jetty-ee10-servlets/${dependency.org.eclipse.jetty}</bundle>
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-security/${dependency.org.eclipse.jetty}</bundle>
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-jmx/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-jaas/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-session/${dependency.org.eclipse.jetty}</bundle>
 	</feature>
 
-	<feature name="pax-web-jetty-extras" description="Jetty 9 additional bundles" version="${dependency.org.eclipse.jetty}">
+	<feature name="pax-web-jetty-extras" description="Jetty 12 additional bundles" version="${dependency.org.eclipse.jetty}">
 		<feature>pax-web-jetty</feature>
 		<feature>spifly</feature>
 
@@ -101,23 +101,29 @@
 
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-client/${dependency.org.eclipse.jetty}</bundle>
 		<bundle start-level="30">mvn:org.eclipse.jetty/jetty-alpn-client/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-javax-common/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-javax-client/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-javax-server/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-jetty-api/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-core-common/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-core-client/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-core-server/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/websocket-servlet/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/jetty-websocket-jetty-api/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/jetty-websocket-jetty-common/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/jetty-websocket-jetty-client/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/jetty-websocket-jetty-server/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/jetty-websocket-core-common/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/jetty-websocket-core-client/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.websocket/jetty-websocket-core-server/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.ee10.websocket/jetty-ee10-websocket-jakarta-common/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.ee10.websocket/jetty-ee10-websocket-jakarta-client/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.ee10.websocket/jetty-ee10-websocket-jakarta-server/${dependency.org.eclipse.jetty}</bundle>
+		<!-- <bundle start-level="30">mvn:org.eclipse.jetty/jetty-webapp/${dependency.org.eclipse.jetty}</bundle> -->
+		<!-- <bundle start-level="30">mvn:org.eclipse.jetty.ee10.websocket/jetty-ee10-websocket-jetty-client-webapp/${dependency.org.eclipse.jetty}</bundle> -->
+		<!-- <bundle start-level="30">mvn:org.eclipse.jetty.ee10.websocket/jetty-ee10-websocket-jakarta-client-webapp/${dependency.org.eclipse.jetty}</bundle> -->
+		<bundle start-level="30">mvn:org.eclipse.jetty.ee10.websocket/jetty-ee10-websocket-servlet/${dependency.org.eclipse.jetty}</bundle>
 	</feature>
 
-	<feature name="pax-web-jetty-http2" description="Jetty 9 bundles for HTTP/2 support" version="${dependency.org.eclipse.jetty}" >
+	<feature name="pax-web-jetty-http2" description="Jetty 12 bundles for HTTP/2 support" version="${dependency.org.eclipse.jetty}" >
 		<feature>pax-web-jetty</feature>
 		<feature>pax-web-jetty-http2-jdk9</feature>
 
-		<bundle start-level="30">mvn:org.eclipse.jetty.http2/http2-hpack/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.http2/http2-common/${dependency.org.eclipse.jetty}</bundle>
-		<bundle start-level="30">mvn:org.eclipse.jetty.http2/http2-server/${dependency.org.eclipse.jetty}</bundle>
+		<!-- <bundle start-level="30">mvn:org.eclipse.jetty.http3/jetty-http3-qpack/${dependency.org.eclipse.jetty}</bundle> -->
+		<bundle start-level="30">mvn:org.eclipse.jetty.http3/jetty-http3-common/${dependency.org.eclipse.jetty}</bundle>
+		<bundle start-level="30">mvn:org.eclipse.jetty.http3/jetty-http3-server/${dependency.org.eclipse.jetty}</bundle>
 	</feature>
 
 	<feature name="pax-web-jetty-http2-extras" description="Jetty 9 additional bundles for HTTP/2 support" version="${dependency.org.eclipse.jetty}" >

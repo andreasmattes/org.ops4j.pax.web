@@ -89,7 +89,7 @@
 								<descriptor>mvn:org.ops4j.pax.web/pax-web-features</descriptor>
 							</blacklistedDescriptors>
 							<distribution>org.apache.karaf.features:framework</distribution>
-							<javase>11</javase>
+							<javase>17</javase>
 							<framework>
 								<feature>framework</feature>
 							</framework>
@@ -98,29 +98,29 @@
 								<feature>pax-web-core</feature>
 								<feature>pax-web-websockets</feature>
 								<feature>pax-web-jetty</feature>
-								<feature>pax-web-jetty-websockets</feature>
+<!--								<feature>pax-web-jetty-websockets</feature> -->
 								<feature>pax-web-jetty-extras</feature>
-								<feature>pax-web-jetty-http2</feature>
-								<feature>pax-web-jetty-http2-extras</feature>
-								<feature>pax-web-jetty-http2-jdk9</feature>
+<!--								<feature>pax-web-jetty-http2</feature> -->
+<!--								<feature>pax-web-jetty-http2-extras</feature> -->
+<!--								<feature>pax-web-jetty-http2-jdk9</feature> -->
 								<feature>pax-web-http-jetty</feature>
-<!--								<feature>pax-web-jetty-keycloak18</feature>-->
-								<feature>pax-web-jetty-keycloak</feature>
-								<feature>pax-web-tomcat</feature>
-								<feature>pax-web-tomcat-websockets</feature>
-								<feature>pax-web-http-tomcat</feature>
-<!--								<feature>pax-web-tomcat-keycloak18</feature>-->
-								<feature>pax-web-tomcat-keycloak</feature>
-								<feature>pax-web-undertow</feature>
-								<feature>pax-web-undertow-websockets</feature>
-<!--								<feature>pax-web-undertow-keycloak18</feature>-->
-								<feature>pax-web-undertow-keycloak</feature>
-								<feature>pax-web-http-undertow</feature>
-								<feature>pax-web-jsp</feature>
+<!--								<feature>pax-web-jetty-keycloak18</feature >-->
+<!--								<feature>pax-web-jetty-keycloak</feature> -->
+<!--								<feature>pax-web-tomcat</feature> -->
+<!--								<feature>pax-web-tomcat-websockets</feature> -->
+<!--								<feature>pax-web-http-tomcat</feature> -->
+<!--								<feature>pax-web-tomcat-keycloak18</feature> -->
+<!--								<feature>pax-web-tomcat-keycloak</feature> -->
+<!--								<feature>pax-web-undertow</feature> -->
+<!--								<feature>pax-web-undertow-websockets</feature> -->
+<!--								<feature>pax-web-undertow-keycloak18</feature> -->
+<!--								<feature>pax-web-undertow-keycloak</feature> -->
+<!--								<feature>pax-web-http-undertow</feature> -->
+<!--								<feature>pax-web-jsp</feature> -->
 								<feature>pax-web-whiteboard</feature>
 								<feature>pax-web-war</feature>
-								<feature>pax-web-karaf</feature>
-								<feature>keycloak-adapter-core</feature>
+<!--								<feature>pax-web-karaf</feature> -->
+<!--								<feature>keycloak-adapter-core</feature> -->
 							</features>
 							<verifyTransitive>false</verifyTransitive>
 							<ignoreMissingConditions>true</ignoreMissingConditions>
