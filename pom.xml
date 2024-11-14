@@ -187,11 +187,13 @@
 		<dependency.jakarta.annotation-api>2.1.1</dependency.jakarta.annotation-api>
 		<dependency.jakarta.authentication-api>3.0.0</dependency.jakarta.authentication-api>
 		<dependency.jakarta.el-api>5.0.1</dependency.jakarta.el-api>
+		<dependency.jakarta.el3-api>3.0.33</dependency.jakarta.el3-api>
 		<dependency.jakarta.enterprise.cdi-api>4.0.1</dependency.jakarta.enterprise.cdi-api>
 		<dependency.jakarta.inject-api>2.0.1</dependency.jakarta.inject-api>
 		<dependency.jakarta.interceptor-api>2.2.0-RC1</dependency.jakarta.interceptor-api>
 		<dependency.jakarta.persistence-api>3.1.0</dependency.jakarta.persistence-api>
-		<dependency.jakarta.servlet-api>6.0.0</dependency.jakarta.servlet-api>
+		<dependency.jakarta.servlet-api>6.1.10</dependency.jakarta.servlet-api>
+		<dependency.jakarta.servlet4-api>4.0.44</dependency.jakarta.servlet4-api>
 		<dependency.jakarta.servlet.jsp-api>3.1.1</dependency.jakarta.servlet.jsp-api>
 		<dependency.jakarta.servlet.jsp.jstl-api>3.0.0</dependency.jakarta.servlet.jsp.jstl-api>
 		<dependency.jakarta.transaction-api>2.0.1</dependency.jakarta.transaction-api>

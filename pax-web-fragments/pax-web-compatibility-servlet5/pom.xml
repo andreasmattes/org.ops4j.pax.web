@@ -28,15 +28,10 @@
 	</parent>
 
 	<groupId>org.ops4j.pax.web</groupId>
-	<artifactId>pax-web-compatibility-el2</artifactId>
+	<artifactId>pax-web-compatibility-servlet5</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>OPS4J Pax Web - EL 2.2 compatibility</name>
-
-	<description>
-		This fragment bundle can be used together with _canonical_ (IMO) jakarta.el-api instead of
-		more OSGi aware geronimo-el_2.2_spec (that declares additional caps/reqs)
-	</description>
+	<name>OPS4J Pax Web - Servlet API 5.0 compatibility</name>
 
 	<build>
 		<plugins>
@@ -46,17 +41,21 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Fragment-Host>javax.el-api-3</Fragment-Host>
+						<Fragment-Host>jakarta.servlet-api-6</Fragment-Host>
 						<Export-Package>
-							javax.el;version="2.2"
+							jakarta.servlet;version="6.0.9";uses:="jakarta.servlet.annotation,jakarta.servlet.descriptor",
+							jakarta.servlet;version="5.0.9";uses:="jakarta.servlet.annotation,jakarta.servlet.descriptor",
+							jakarta.servlet.annotation;version="6.0.9";uses:="jakarta.servlet",
+							jakarta.servlet.annotation;version="5.0.9";uses:="jakarta.servlet",
+							jakarta.servlet.http;version="6.0.9";uses:="jakarta.servlet",
+							jakarta.servlet.http;version="5.0.9";uses:="jakarta.servlet",
+							jakarta.servlet.descriptor;version="6.0.9",
+							jakarta.servlet.descriptor;version="5.0.9",
 						</Export-Package>
 						<Provide-Capability><![CDATA[
-							osgi.contract;osgi.contract=JavaEL;uses:="javax.el";version:List<Version>="3.0,2.2,2.1,2.0,1.0"
+							osgi.contract;osgi.contract=JavaServlet;uses:="jakarta.servlet,jakarta.servlet.http,jakarta.servlet.descriptor,jakarta.servlet.annotation";
+								version:List<Version>="6.0,5.0"
 						]]></Provide-Capability>
-<!--						<Require-Capability><![CDATA[-->
-<!--							osgi.serviceloader;filter:="(osgi.serviceloader=javax.el.ExpressionFactory)";cardinality:=multiple;resolution:=optional,-->
-<!--							osgi.extender;filter:="(osgi.extender=osgi.serviceloader.processor)",-->
-<!--						]]></Require-Capability>-->
 					</instructions>
 				</configuration>
 			</plugin>
@@ -68,8 +67,9 @@
 		<!-- JakartaEE -->
 
 		<dependency>
-			<groupId>jakarta.el</groupId>
-			<artifactId>jakarta.el-api</artifactId>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.1.0</version>
 		</dependency>
 
 	</dependencies>

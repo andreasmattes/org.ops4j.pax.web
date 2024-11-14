@@ -28,15 +28,10 @@
 	</parent>
 
 	<groupId>org.ops4j.pax.web</groupId>
-	<artifactId>pax-web-compatibility-el2</artifactId>
+	<artifactId>pax-web-compatibility-jaxb3</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>OPS4J Pax Web - EL 2.2 compatibility</name>
-
-	<description>
-		This fragment bundle can be used together with _canonical_ (IMO) jakarta.el-api instead of
-		more OSGi aware geronimo-el_2.2_spec (that declares additional caps/reqs)
-	</description>
+	<name>OPS4J Pax Web - JAXB API 3.0 compatibility</name>
 
 	<build>
 		<plugins>
@@ -46,17 +41,19 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Fragment-Host>javax.el-api-3</Fragment-Host>
+						<Fragment-Host>jakarta.xml.bind-api</Fragment-Host>
 						<Export-Package>
-							javax.el;version="2.2"
+							jakarta.xml.bind;uses:="jakarta.xml.bind.annotation.adapters,jakarta.xml.bind.attachment,javax.xml.namespace,javax.xml.stream,javax.xml.transform,javax.xml.validation,org.w3c.dom,org.xml.sax";version="3.0.9",
+							jakarta.xml.bind.annotation;uses:="jakarta.xml.bind,javax.xml.parsers,javax.xml.transform,javax.xml.transform.dom,org.w3c.dom";version="3.0.9",
+							jakarta.xml.bind.annotation.adapters;version="3.0.9",
+							jakarta.xml.bind.attachment;uses:="jakarta.activation";version="3.0.9",
+							jakarta.xml.bind.helpers;uses:="jakarta.xml.bind,jakarta.xml.bind.annotation.adapters,jakarta.xml.bind.attachment,javax.xml.stream,javax.xml.transform,javax.xml.validation,org.w3c.dom,org.xml.sax";version="3.0.9",
+							jakarta.xml.bind.util;uses:="jakarta.xml.bind,javax.xml.transform.sax";version="3.0.9"
 						</Export-Package>
 						<Provide-Capability><![CDATA[
-							osgi.contract;osgi.contract=JavaEL;uses:="javax.el";version:List<Version>="3.0,2.2,2.1,2.0,1.0"
+							osgi.contract;osgi.contract=JakartaXmlBind;uses:="jakarta.xml.bind,jakarta.xml.bind.annotation,jakarta.xml.bind.annotation.adapter,jakarta.xml.bind,attachment,jakarta.xml.bind.helpers,jakarta.xml.bind.util";
+								version:List<Version>="4.0,3.0"
 						]]></Provide-Capability>
-<!--						<Require-Capability><![CDATA[-->
-<!--							osgi.serviceloader;filter:="(osgi.serviceloader=javax.el.ExpressionFactory)";cardinality:=multiple;resolution:=optional,-->
-<!--							osgi.extender;filter:="(osgi.extender=osgi.serviceloader.processor)",-->
-<!--						]]></Require-Capability>-->
 					</instructions>
 				</configuration>
 			</plugin>
@@ -68,8 +65,9 @@
 		<!-- JakartaEE -->
 
 		<dependency>
-			<groupId>jakarta.el</groupId>
-			<artifactId>jakarta.el-api</artifactId>
+			<groupId>jakarta.xml.bind</groupId>
+			<artifactId>jakarta.xml.bind-api</artifactId>
+			<version>4.0.2</version>
 		</dependency>
 
 	</dependencies>
