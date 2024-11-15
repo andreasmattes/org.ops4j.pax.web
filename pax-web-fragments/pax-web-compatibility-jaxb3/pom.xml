@@ -41,7 +41,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Fragment-Host>jakarta.xml.bind-api</Fragment-Host>
+						<Fragment-Host>jakarta.xml.bind-api-40</Fragment-Host>
 						<Export-Package>
 							jakarta.xml.bind;uses:="jakarta.xml.bind.annotation.adapters,jakarta.xml.bind.attachment,javax.xml.namespace,javax.xml.stream,javax.xml.transform,javax.xml.validation,org.w3c.dom,org.xml.sax";version="3.0.9",
 							jakarta.xml.bind.annotation;uses:="jakarta.xml.bind,javax.xml.parsers,javax.xml.transform,javax.xml.transform.dom,org.w3c.dom";version="3.0.9",
