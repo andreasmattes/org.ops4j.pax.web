@@ -70,6 +70,7 @@
 		<dependency>
 			<groupId>jakarta.el</groupId>
 			<artifactId>jakarta.el-api</artifactId>
+			<version>${dependency.jakarta.el3-api}</version>
 		</dependency>
 
 	</dependencies>
